@@ -7,9 +7,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Set Up
+# Importing and Wrangling of Data
 
-```{r libraries}
+**Used libraries**
+```{r libraries, message=FALSE}
 library(here)
 library(tidyverse)
 library(ggplot2)
@@ -32,17 +33,17 @@ library(ggeffects)
 library(effects)
 ```
 
-## Importing and Wrangling of Data
 
 Publicly available sample child interview datasets from years 2020 and 2019 were extracted from the Centers for Disease Control and Prevention website. The interviews are conducted on a yearly basis as a part of the National Health Interview Survey carried out by National Center for Health Statistics throughout the US. After filtering entries with missing values, the final sample size was 4,485 adolescents between age 10 and 17. The average age was 13.62 ⩲ 2.28 years SD.
 
 
-```{r data, message=FALSE}
+```{r data, message=FALSE, warning=FALSE}
 child_2020 <- read_csv("child20.csv")
 child_2019 <- read_csv("child19.csv")
 ```
 
 Selecting the target columns and renaming them 
+
 ```{r adjusting the dataset, message=FALSE}
 child_data <- full_join(child_2019, child_2020) %>% #joining data from 2019 and 2020
   rename(age=AGEP_C, 
@@ -96,6 +97,7 @@ write_csv(summaries, "summary_table.csv")
 ```
 
 ## Age Distribution
+
 ```{r}
 age_graph <- ggplot(adolescents, aes(x=age)) +
   geom_bar(fill="darksalmon") +
@@ -118,6 +120,11 @@ sd(adolescents$age)
 
 ## Exploring used variables and their distribution
 ### SDQ 30 - depedent variable
+
+**Strengths & Difficulties Questionnaire**
+
+The Strengths & Difficulties Questionnaire (SDQ) is commonly used as a screening for mental health problems in children and youth between the age 4 and 17 (Goodman and Goodman, 2009). During the current interview, a parental version which is completed by a parent or an adult living in the same household instead of the child was used (“Survey Description, National Health Interview Survey, 2020,” 2020). As a response variable, scores from three subscales, hyperactivity scale, emotional symptoms, and conduct problems scale, were summed resulting in possible scores from 0 to 30. SDQ peer problems subscale (from now on referred to as “peer problems”, possible score 0-10) was used as one of the predictors and was treated as a factor.
+
 ```{r}
 response_graph <- ggplot(adolescents, aes(x=SDQ_30)) +
   geom_bar(fill="thistle") +
@@ -153,8 +160,43 @@ plot(fit_geom)
 ```
 
 
+### Peer problems score - independent variable 
+
+```{r}
+peers_graph_overall <- ggplot(adolescents, aes(x=SDQ_peer, fill=peer_problems)) +
+  geom_bar(width=0.9, fill=c("#875F79")) +
+  theme_cowplot() +
+  background_grid(major="y", minor="y") +
+  theme(legend.position = "none", plot.title = element_text(size=12, vjust=6), axis.title = element_text(size=10)) +
+  labs(x="Problems with peer relationships", y="Count", title="Distribution of SDQ Peer Problems Subscale Scores") +
+  scale_x_continuous(breaks = c(0,1,2,3,4,5,6,7,8,9,10)) 
+
+peers_graph_high <- ggplot(subset(adolescents, SDQ_peer > 4), aes(x=SDQ_peer)) +
+  geom_bar(fill="#875F79", width=0.9) +
+  geom_text(stat='count', aes(label=..count..), vjust=-0.8, color="grey") +
+  theme_cowplot() +
+  background_grid(major="y", minor="y") +
+  theme(legend.position = "none", plot.title = element_text(size=12), axis.title = element_text(size=10), axis.text = element_text(size=9), plot.background = element_rect(fill="white", size=0.8, color="gray", linetype=3)) +
+  labs(x=" ", y=" ") +
+  scale_x_continuous(breaks = c(5,6,7,8,9,10))  +
+  scale_y_continuous(breaks=c(0, 20, 40, 60, 80))
+
+peers_graph <- peers_graph_overall + inset_element(peers_graph_high, left = 0.5, bottom = 0.4, right = 1, top = 1.05)
+
+ggsave("peer_graph.png", plot=peers_graph, units = "cm", width = 14, height = 10, dpi = "retina", 
+       device = "png", path = here())
+
+peers_graph
+```
+
+
 ### Cumulative trauma - independent variable
-```{r version 1}
+
+**Cumulative trauma**
+
+To account for a diversity of early life traumas, cumulative trauma score was calculated from responses to six questions. Four questions asked whether the child has 1) been a victim or witness of violence, 2) ever lived with a parent who was incarcerated, 3) ever lived with anyone mentally ill/severely depressed, and 4) ever lived with anyone with alcohol/drug problems. Responding “yes” to any question raised the cumulative trauma score by 1. Second, three levels of food insecurity were recalculated so that value of 4 corresponds to the most severe food insecurity. Lastly, the ratio of the child’s family income to the American national poverty threshold was recalculated to be 4 if the family income fell within a 0 - 0.5 poverty ratio and 0 if the family income was above 2 poverty ratio. Thus, the final value of cumulative trauma score was between 0 and 12. Despite the extremely uneven distribution, the predictor was not transformed as it contained a high count of meaningful zeros and generalized linear models are able to accommodate this asymmetry. 
+
+```{r version 1, warning=FALSE}
 trauma_graph <- ggplot(adolescents, aes(x=cumulative_trauma)) +
   geom_bar(fill="#CC6666", width=0.1) +
   theme_cowplot() +
@@ -215,45 +257,17 @@ trauma_graph_violin
 ```
 
 
-### Peer problems score
-```{r}
-peers_graph_overall <- ggplot(adolescents, aes(x=SDQ_peer, fill=peer_problems)) +
-  geom_bar(width=0.9, fill=c("#875F79")) +
-  theme_cowplot() +
-  background_grid(major="y", minor="y") +
-  theme(legend.position = "none", plot.title = element_text(size=12, vjust=6), axis.title = element_text(size=10)) +
-  labs(x="Problems with peer relationships", y="Count", title="Distribution of SDQ Peer Problems Subscale Scores") +
-  scale_x_continuous(breaks = c(0,1,2,3,4,5,6,7,8,9,10)) 
-
-peers_graph_high <- ggplot(subset(adolescents, SDQ_peer > 4), aes(x=SDQ_peer)) +
-  geom_bar(fill="#875F79", width=0.9) +
-  geom_text(stat='count', aes(label=..count..), vjust=-0.8, color="grey") +
-  theme_cowplot() +
-  background_grid(major="y", minor="y") +
-  theme(legend.position = "none", plot.title = element_text(size=12), axis.title = element_text(size=10), axis.text = element_text(size=9), plot.background = element_rect(fill="white", size=0.8, color="gray", linetype=3)) +
-  labs(x=" ", y=" ") +
-  scale_x_continuous(breaks = c(5,6,7,8,9,10))  +
-  scale_y_continuous(breaks=c(0, 20, 40, 60, 80))
-
-peers_graph <- peers_graph_overall + inset_element(peers_graph_high, left = 0.5, bottom = 0.4, right = 1, top = 1.05)
-
-ggsave("peer_graph.png", plot=peers_graph, units = "cm", width = 14, height = 10, dpi = "retina", 
-       device = "png", path = here())
-
-peers_graph
-```
-
-
-#### check for collinearity
-```{r}
+```{r, include=FALSE}
 ggplot(adolescents, aes(x=as.numeric(SDQ_peer), y=cumulative_trauma)) +
   geom_jitter(width=0.4) +
   geom_smooth(stat = "smooth", method="glm")
 ```
 
 
-
 ## First plotting of the data
+
+Relationship between cumulative trauma and SDQ 30 according to peer problems score is visualised below.
+
 ```{r}
 distribution <- ggplot(adolescents, aes(x=cumulative_trauma, y=as.numeric(SDQ_30), color=as.factor(SDQ_peer))) +
   geom_jitter(width=0.3) +
@@ -318,6 +332,8 @@ if (dispersion_poisson > 2){
 ```
 
 ## Negative Binomial Model
+
+
 ```{r}
 fit_nbinom <- fitdist(adolescents$SDQ_30, "nbinom")
 plot(fit_nbinom)
@@ -393,12 +409,12 @@ anova(control_model_negbi, PP_model_negbi, test="LRT")
 ```
 
 ### New reduced NB model 
-```{r}
-hist(rstandard(control_model_negbi), main = "Distribution of residuals", xlab="Residuals")
-plot(control_model_negbi,2)
-plot(rstandard(control_model_negbi),type="l")
-rootogram(control_model_negbi, max=30, main = "Negative Binomial Model: Observed vs Fitted Values", xlab="SDQ 30")
-```
+
+The effects of cumulative trauma, peer problems and their interaction on adolescents’ score on SDQ 30 was investigated using negative binomial regression based on parental responses (N=4,485) to National Health Interview Survey. While the maximal model did not significantly differ from the reduced model which did not include the interaction (χ2(10) = 12.039, p = 0.282); both predictors, cumulative trauma (χ2(1) = 143.645, p < 0.001) and peer problems (χ2(10) = 654.938, p < 0.001), were significant. Therefore, a model following the formula below was used:
+
+log(SDQ30) = intercept + [peer problems] + m*cumulative trauma
+
+While according to the model, an extra point in cumulative trauma score adds 1.089 to SDQ 30 score, increases in peer problems do not produce consistent increase in SDQ 30. A summary of the model can be seen in below. 
 
 ```{r}
 
@@ -415,6 +431,9 @@ summary(allEffects(control_model_negbi))
 
 
 ### Plotting of the model predictions
+
+Predictions generated based on the model can be seen in below.  
+
 ```{r}
 model_predict <- data.frame(ggpredict(control_model_negbi,  terms = c("cumulative_trauma", "SDQ_peer")))
 
@@ -446,6 +465,7 @@ ggsave("model_graph.png", plot=model_graph, units = "cm", width = 15, height = 1
        device = "png", path = here())
 ```
 
+
 ```{r}
 data_prediction <- distribution + model_graph &
   theme(plot.tag = element_text(size = 8), plot.title = element_text(size=12, face="italic")) &
@@ -459,6 +479,15 @@ ggsave("data_prediction.png", plot=data_prediction, units = "cm", width = 15, he
 data_prediction
 ```
 
+**Model Fit**
+However, the negative binomial model did not provide a perfect fit and produced uneven distribution of produced residuals.
+
+```{r}
+hist(rstandard(control_model_negbi), main = "Distribution of residuals", xlab="Residuals")
+plot(control_model_negbi,2)
+plot(rstandard(control_model_negbi),type="l")
+rootogram(control_model_negbi, max=30, main = "Negative Binomial Model: Observed vs Fitted Values", xlab="SDQ 30")
+```
 
 ## Hurdle
 
@@ -483,9 +512,18 @@ AIC(control_model_negbi, control_model_hurdle)
 ```
 
 Hurdle model looks like a pretty good fit but residuals not really symmetrically distributed - still rightward skewed 
-When tested against final NegBi model, it has higher AIC 
+When tested against final NegBi model, it has higher AIC.  
 
 ## CLM
+
+**Cumulative Logit Model**
+
+To further explore the data, a cumulative logit model was built using the clm function from ordinal R package (Christensen, 2019). The cumulative link model predicted probabilities that a given adolescent acquires a certain score in SDQ 30. In this case, the model including an interaction between cumulative trauma and peer problems was significantly different from a reduced model (χ2(10) = 26.302, p = 0.003). Therefore, model following the formula below was used:
+
+logit(P(Y_i ≤ j)) = intercept - ([peer problems_i] + [m+interaction]*cumulative trauma_i)
+  *i = 1,...,n,      j = 1,...J -1* 
+
+A summary of the model can be found in below. Compared to the previous model using negative binomial regression, this model produced more symmetrical distribution of residuals. Furthermore, the cumulative logit model produced a smaller Akaike information criterion compared to the negative binomial model (Cumulative Logit Model: AIC = 21,595; Negative Binomial Model: AIC=21,813). 
 
 ```{r}
 adolescents$SDQ_30 <- as.ordered(adolescents$SDQ_30)
@@ -498,6 +536,7 @@ scale_test(clm_model)
 ```
 
 ```{r}
+#checking against reduced model
 clm_model_control <- clm(SDQ_30 ~ cumulative_trauma+SDQ_peer, data=adolescents)
 
 LL_interaction <- logLik(clm_model)
@@ -508,8 +547,22 @@ delta_2 <- 2*(LL_interaction-LL_control)
 anova(clm_model_control, clm_model, test="Chisq")
 ```
 
-### Plotting of the final model
 ```{r}
+#model fit
+hist(resids(clm_model), main = "Distribution of residuals", xlab="Residuals")
+autoplot.clm(clm_model, what = "qq") + 
+  theme_bw() + 
+  labs(title = "Normal Q-Q") + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"))
+plot(resids(clm_model),type="l")
+```
+
+
+### Plotting of the final model
+
+Predicted probabilities of a given SDQ30 score based the fitted cumulative logit model. Formula: SDQ30 ~ cumulative trauma * peer problems. Values are stacked on each other and thus do not respond to the value on the y-axis.
+
+```{r, message=FALSE}
 new_data <- data.frame("cumulative_trauma"=c(0:12), "SDQ_peer"=as.factor(0))
 predicted <- data.frame(predict(clm_model,new_data,type = "p")) %>% mutate(cumulative_trauma=c(0:12), SDQ_peer=as.factor(0)) 
 
@@ -544,8 +597,10 @@ probabilities <- ggplot(predicted, aes(x=cumulative_trauma, y=probability, fill=
 ggsave("probabilities.png", plot=probabilities, units = "cm", width = 25, height = 15.5, dpi = "retina", 
        device = "png", path = here())  
 
+probabilities
 
-ggplot(predicted, aes(x=cumulative_trauma, y=probability, color=SDQ_peer, fill=SDQ_peer)) +
+
+not_filled <- ggplot(predicted, aes(x=cumulative_trauma, y=probability, color=SDQ_peer, fill=SDQ_peer)) +
   geom_line() +
   theme_classic() +
   scale_x_continuous(breaks = c(0,4,8,12)) +
@@ -553,18 +608,9 @@ ggplot(predicted, aes(x=cumulative_trauma, y=probability, color=SDQ_peer, fill=S
   scale_fill_scico_d(palette = 'batlow', begin=0, end=1) +
   facet_wrap(.~ordered(SDQ_30)) +
   labs(x = "Cumulative trauma", y="Probability")
+
 ```
 
-
-```{r}
-#model fit
-hist(resids(clm_model), main = "Distribution of residuals", xlab="Residuals")
-autoplot.clm(clm_model, what = "qq") + 
-  theme_bw() + 
-  labs(title = "Normal Q-Q") + 
-  theme(plot.title = element_text(hjust = 0.5, face = "bold"))
-plot(resids(clm_model),type="l")
-```
 
 
 ```{r, eval=FALSE}
@@ -581,4 +627,9 @@ plot_model(clm_model, terms="cumulative_trauma", type="eff") +
   theme(axis.title.y = element_blank())
 
 ```
+
+# Discussion 
+
+While the negative binomial model did not support the hypothesized interaction between peer problems and cumulative trauma, it might be more appropriate to draw conclusions based on the cumulative logit model which performed better in model diagnostics, provided improved model fit, and worked with SDQ 30 as an ordinal rather than continuous variable. According to the cumulative logit model, cumulative trauma, peer problems, and their interaction were significant predictors of SDQ 30 score. Even though previously a study found that peer support moderates impact of complex trauma like abuse or neglect on adolescents’ mental health (Yearwood et al., 2019), the current model indicates that the higher the cumulative trauma, the less positive impact good peer relationships have on adolescents’ SDQ score. It is important to note that the previous study tested environmental adversity and complex trauma separately, while the current study used a score that summed these categories with a higher impact of environmental adversity compared to traumatic experiences. 
+Furthermore, the current study relies on parental responses instead of self-report which can reveal more severe mental health problems (Rescorla et al., 2013). Another aspect to consider is whether a lack of peer relationships problems as reported by the SDQ subscale used here can be equated to a sense of belonging, strong peer support and secure peer attachment which have been previously associated with better mental health and resilience (Coyle et al., 2021; Gorrese, 2016; Harmelen et al., 2017; Klasen et al., 2015; Vaughan et al., 2010; Yearwood et al., 2019). Overall, due to covering a wide range of topics, the National Health Interview Survey does not provide many details, like the nature of peer relationships, and thus a model based on the responses will not be able to generate very precise predictions. Therefore, future studies should further investigate the relationship between peer relationships and cumulative life trauma and its impact on mental health via more extensive questionnaires and interviews with adolescents instead of their guardians.
 

@@ -1,5 +1,5 @@
 ---
-title: "Data Preparation and Analysis"
+title: "Peer relationships interact with cumulative trauma when mental health issues are in stake: Data Analysis Script"
 author: "Anna Makova"
 date: "10/01/2022"
 site: bookdown::bookdown_site
@@ -10,7 +10,10 @@ output:
 
 # Overview
 
-This is the script used for analysis conducted for a level 5 statistics course report with title **Peer relationships interact with cumulative trauma when mental health issues are in stake**.
+This is the script used for data wrangling and analysis independently conducted for a level 5 statistics course at the University of Glasgow.
+
+Title: **Peer relationships interact with cumulative trauma when mental health issues are in stake**. 
+Grade: 21/22
 
 ## Introduction 
 
