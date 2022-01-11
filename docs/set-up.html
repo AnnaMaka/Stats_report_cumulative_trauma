@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Set Up | Data Preparation and Analysis</title>
+  <meta name="description" content="2 Set Up | Data Preparation and Analysis" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Set Up | Data Preparation and Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Set Up | Data Preparation and Analysis" />
+  
+  
+  
+
+<meta name="author" content="Anna Makova" />
+
+
+<meta name="date" content="2022-10-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="basic-data-summaries-and-explorations.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a><ul>
+<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#importing-and-wrangling-of-data"><i class="fa fa-check"></i><b>2.1</b> Importing and Wrangling of Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html"><i class="fa fa-check"></i><b>3</b> Basic Data Summaries and Explorations</a><ul>
+<li class="chapter" data-level="3.1" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#age-distribution"><i class="fa fa-check"></i><b>3.1</b> Age Distribution</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#exploring-used-variables-and-their-distribution"><i class="fa fa-check"></i><b>3.2</b> Exploring used variables and their distribution</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#sdq-30---depedent-variable"><i class="fa fa-check"></i><b>3.2.1</b> SDQ 30 - depedent variable</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#cumulative-trauma---independent-variable"><i class="fa fa-check"></i><b>3.2.2</b> Cumulative trauma - independent variable</a></li>
+<li class="chapter" data-level="3.2.3" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#peer-problems-score"><i class="fa fa-check"></i><b>3.2.3</b> Peer problems score</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#first-plotting-of-the-data"><i class="fa fa-check"></i><b>3.3</b> First plotting of the data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis</a><ul>
+<li class="chapter" data-level="4.1" data-path="analysis.html"><a href="analysis.html#poisson-regression"><i class="fa fa-check"></i><b>4.1</b> Poisson regression</a></li>
+<li class="chapter" data-level="4.2" data-path="analysis.html"><a href="analysis.html#negative-binomial-model"><i class="fa fa-check"></i><b>4.2</b> Negative Binomial Model</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="analysis.html"><a href="analysis.html#new-reduced-nb-model"><i class="fa fa-check"></i><b>4.2.1</b> New reduced NB model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="analysis.html"><a href="analysis.html#plotting-of-the-model-predictions"><i class="fa fa-check"></i><b>4.2.2</b> Plotting of the model predictions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="analysis.html"><a href="analysis.html#hurdle"><i class="fa fa-check"></i><b>4.3</b> Hurdle</a></li>
+<li class="chapter" data-level="4.4" data-path="analysis.html"><a href="analysis.html#clm"><i class="fa fa-check"></i><b>4.4</b> CLM</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="analysis.html"><a href="analysis.html#plotting-of-the-final-model"><i class="fa fa-check"></i><b>4.4.1</b> Plotting of the final model</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Preparation and Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="set-up" class="section level1">
+<h1><span class="header-section-number">2</span> Set Up</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="set-up.html#cb1-1"></a><span class="kw">library</span>(here)</span>
+<span id="cb1-2"><a href="set-up.html#cb1-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="set-up.html#cb1-3"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="set-up.html#cb1-4"></a><span class="kw">library</span>(cowplot)</span>
+<span id="cb1-5"><a href="set-up.html#cb1-5"></a><span class="kw">library</span>(fitdistrplus)</span>
+<span id="cb1-6"><a href="set-up.html#cb1-6"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb1-7"><a href="set-up.html#cb1-7"></a><span class="kw">library</span>(broom)</span>
+<span id="cb1-8"><a href="set-up.html#cb1-8"></a><span class="kw">library</span>(MASS)</span>
+<span id="cb1-9"><a href="set-up.html#cb1-9"></a><span class="kw">library</span>(sjPlot)</span>
+<span id="cb1-10"><a href="set-up.html#cb1-10"></a><span class="kw">library</span>(sjmisc)</span>
+<span id="cb1-11"><a href="set-up.html#cb1-11"></a><span class="kw">library</span>(jtools)</span>
+<span id="cb1-12"><a href="set-up.html#cb1-12"></a><span class="kw">library</span>(interactions)</span>
+<span id="cb1-13"><a href="set-up.html#cb1-13"></a><span class="kw">library</span>(scico)</span>
+<span id="cb1-14"><a href="set-up.html#cb1-14"></a><span class="kw">library</span>(ordinal)</span>
+<span id="cb1-15"><a href="set-up.html#cb1-15"></a><span class="kw">library</span>(gghalves)</span>
+<span id="cb1-16"><a href="set-up.html#cb1-16"></a><span class="kw">library</span>(patchwork)</span>
+<span id="cb1-17"><a href="set-up.html#cb1-17"></a><span class="kw">library</span>(sure)</span>
+<span id="cb1-18"><a href="set-up.html#cb1-18"></a><span class="kw">library</span>(countreg)</span>
+<span id="cb1-19"><a href="set-up.html#cb1-19"></a><span class="kw">library</span>(ggeffects)</span>
+<span id="cb1-20"><a href="set-up.html#cb1-20"></a><span class="kw">library</span>(effects)</span></code></pre></div>
+<div id="importing-and-wrangling-of-data" class="section level2">
+<h2><span class="header-section-number">2.1</span> Importing and Wrangling of Data</h2>
+<p>Publicly available sample child interview datasets from years 2020 and 2019 were extracted from the Centers for Disease Control and Prevention website. The interviews are conducted on a yearly basis as a part of the National Health Interview Survey carried out by National Center for Health Statistics throughout the US. After filtering entries with missing values, the final sample size was 4,485 adolescents between age 10 and 17. The average age was 13.62 ⩲ 2.28 years SD.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="set-up.html#cb2-1"></a>child_<span class="dv">2020</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;child20.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: 28 parsing failures.
+##  row          col           expected actual          file
+## 1146 INJMVTYPE5_C 1/0/T/F/TRUE/FALSE      2 &#39;child20.csv&#39;
+## 1146 INJMVTYPE4_C 1/0/T/F/TRUE/FALSE      2 &#39;child20.csv&#39;
+## 1146 INJMVTYPE3_C 1/0/T/F/TRUE/FALSE      2 &#39;child20.csv&#39;
+## 1146 INJMVTYPE2_C 1/0/T/F/TRUE/FALSE      2 &#39;child20.csv&#39;
+## 1480 INJMVTYPE4_C 1/0/T/F/TRUE/FALSE      2 &#39;child20.csv&#39;
+## .... ............ .................. ...... .............
+## See problems(...) for more details.</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="set-up.html#cb4-1"></a>child_<span class="dv">2019</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;child19.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: 21 parsing failures.
+##  row         col           expected actual          file
+## 1171 PLNEXCHG2_C 1/0/T/F/TRUE/FALSE      9 &#39;child19.csv&#39;
+## 1575 PLNEXCHG2_C 1/0/T/F/TRUE/FALSE      7 &#39;child19.csv&#39;
+## 1639 PLNEXCHG2_C 1/0/T/F/TRUE/FALSE      2 &#39;child19.csv&#39;
+## 2110 OPHDHP_C    1/0/T/F/TRUE/FALSE      2 &#39;child19.csv&#39;
+## 2240 PLNEXCHG2_C 1/0/T/F/TRUE/FALSE      2 &#39;child19.csv&#39;
+## .... ........... .................. ...... .............
+## See problems(...) for more details.</code></pre>
+<p>Selecting the target columns and renaming them</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="set-up.html#cb6-1"></a>child_data &lt;-<span class="st"> </span><span class="kw">full_join</span>(child_<span class="dv">2019</span>, child_<span class="dv">2020</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#joining data from 2019 and 2020</span></span>
+<span id="cb6-2"><a href="set-up.html#cb6-2"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">age=</span>AGEP_C, </span>
+<span id="cb6-3"><a href="set-up.html#cb6-3"></a>         <span class="dt">SDQ_peer =</span> SDQPEER_C, <span class="dt">SDQ_total =</span> SDQTOT_C, </span>
+<span id="cb6-4"><a href="set-up.html#cb6-4"></a>         <span class="dt">violence=</span>VIOLENEV_C, <span class="dt">parent_jailed =</span> JAILEV_C, <span class="dt">MHI_home=</span> MENTDEPEV_C, <span class="dt">addict_home=</span>ALCDRUGEV_C, </span>
+<span id="cb6-5"><a href="set-up.html#cb6-5"></a>         <span class="dt">food_security=</span>FDSCAT4_C, <span class="dt">poverty_ratio=</span>RATCAT_C) <span class="op">%&gt;%</span></span>
+<span id="cb6-6"><a href="set-up.html#cb6-6"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, SDQ_peer, SDQ_total, violence, parent_jailed, MHI_home, addict_home, food_security, poverty_ratio)</span></code></pre></div>
+<p>Filtering the dataset based on age (only 10yo and older) and calculating some new variables based on given information</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="set-up.html#cb7-1"></a><span class="co">#getting rid of entries with NA values in crucial cols &amp; selecting only above 9 yo</span></span>
+<span id="cb7-2"><a href="set-up.html#cb7-2"></a>adolescents &lt;-<span class="st"> </span>child_data <span class="op">%&gt;%</span></span>
+<span id="cb7-3"><a href="set-up.html#cb7-3"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(SDQ_peer)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#includes data about friendships</span></span>
+<span id="cb7-4"><a href="set-up.html#cb7-4"></a><span class="st">  </span><span class="kw">filter</span>(age <span class="op">&gt;</span><span class="st"> </span><span class="dv">9</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#selecting only adolescents (i.e. 10 and above)</span></span>
+<span id="cb7-5"><a href="set-up.html#cb7-5"></a><span class="st">  </span><span class="kw">filter</span>(SDQ_total <span class="op">&lt;</span><span class="st"> </span><span class="dv">40</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#max value of SDQ = 40</span></span>
+<span id="cb7-6"><a href="set-up.html#cb7-6"></a><span class="st">  </span><span class="kw">filter</span>(SDQ_peer<span class="op">!=</span><span class="dv">88</span>) <span class="op">%&gt;%</span></span>
+<span id="cb7-7"><a href="set-up.html#cb7-7"></a><span class="st">  </span><span class="kw">filter</span>(food_security<span class="op">!=</span><span class="dv">8</span>) <span class="op">%&gt;%</span></span>
+<span id="cb7-8"><a href="set-up.html#cb7-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">SDQ_30 =</span> SDQ_total <span class="op">-</span><span class="st"> </span>SDQ_peer, </span>
+<span id="cb7-9"><a href="set-up.html#cb7-9"></a>         <span class="dt">poverty_recoded =</span> <span class="kw">ifelse</span>(poverty_ratio<span class="op">&lt;</span><span class="dv">6</span>, (<span class="dv">4</span><span class="op">-</span>((poverty_ratio<span class="dv">-1</span>)<span class="op">*</span><span class="fl">0.8</span>)), <span class="dv">0</span>), </span>
+<span id="cb7-10"><a href="set-up.html#cb7-10"></a>         <span class="dt">food_sec_recoded =</span> (food_security<span class="dv">-1</span>)<span class="op">*</span><span class="fl">1.33</span>,</span>
+<span id="cb7-11"><a href="set-up.html#cb7-11"></a>         <span class="dt">violence =</span> <span class="kw">ifelse</span>(violence<span class="op">==</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">parent_jailed =</span> <span class="kw">ifelse</span>(parent_jailed<span class="op">==</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">MHI_home =</span> <span class="kw">ifelse</span>(MHI_home<span class="op">==</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">addict_home =</span> <span class="kw">ifelse</span>(addict_home<span class="op">==</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb7-12"><a href="set-up.html#cb7-12"></a>         <span class="dt">early_life_stress =</span> (violence <span class="op">+</span><span class="st"> </span>parent_jailed <span class="op">+</span><span class="st"> </span>MHI_home <span class="op">+</span><span class="st"> </span>addict_home), </span>
+<span id="cb7-13"><a href="set-up.html#cb7-13"></a>         <span class="dt">cumulative_trauma =</span> (poverty_recoded <span class="op">+</span><span class="st"> </span>food_sec_recoded <span class="op">+</span><span class="st"> </span>early_life_stress),</span>
+<span id="cb7-14"><a href="set-up.html#cb7-14"></a>         <span class="dt">peer_problems =</span> <span class="kw">ifelse</span>(SDQ_peer<span class="op">==</span><span class="dv">0</span>, <span class="st">&quot;none&quot;</span>, <span class="kw">ifelse</span>(SDQ_peer <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>, <span class="st">&quot;mild&quot;</span>, <span class="kw">ifelse</span>(SDQ_peer <span class="op">&lt;</span><span class="st"> </span><span class="dv">7</span>, <span class="st">&quot;moderate&quot;</span>, <span class="st">&quot;severe&quot;</span>)))) <span class="op">%&gt;%</span></span>
+<span id="cb7-15"><a href="set-up.html#cb7-15"></a><span class="st">  </span><span class="kw">relocate</span>(age, SDQ_total, SDQ_<span class="dv">30</span>, SDQ_peer, peer_problems)</span>
+<span id="cb7-16"><a href="set-up.html#cb7-16"></a></span>
+<span id="cb7-17"><a href="set-up.html#cb7-17"></a></span>
+<span id="cb7-18"><a href="set-up.html#cb7-18"></a>sample_size &lt;-<span class="st"> </span><span class="kw">nrow</span>(adolescents)</span>
+<span id="cb7-19"><a href="set-up.html#cb7-19"></a></span>
+<span id="cb7-20"><a href="set-up.html#cb7-20"></a><span class="kw">print</span>(sample_size)</span></code></pre></div>
+<pre><code>## [1] 4485</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-data-summaries-and-explorations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

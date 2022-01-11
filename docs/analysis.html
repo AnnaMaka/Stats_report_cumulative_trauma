@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Analysis | Data Preparation and Analysis</title>
+  <meta name="description" content="4 Analysis | Data Preparation and Analysis" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Analysis | Data Preparation and Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Analysis | Data Preparation and Analysis" />
+  
+  
+  
+
+<meta name="author" content="Anna Makova" />
+
+
+<meta name="date" content="2022-10-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basic-data-summaries-and-explorations.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a><ul>
+<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#importing-and-wrangling-of-data"><i class="fa fa-check"></i><b>2.1</b> Importing and Wrangling of Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html"><i class="fa fa-check"></i><b>3</b> Basic Data Summaries and Explorations</a><ul>
+<li class="chapter" data-level="3.1" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#age-distribution"><i class="fa fa-check"></i><b>3.1</b> Age Distribution</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#exploring-used-variables-and-their-distribution"><i class="fa fa-check"></i><b>3.2</b> Exploring used variables and their distribution</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#sdq-30---depedent-variable"><i class="fa fa-check"></i><b>3.2.1</b> SDQ 30 - depedent variable</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#cumulative-trauma---independent-variable"><i class="fa fa-check"></i><b>3.2.2</b> Cumulative trauma - independent variable</a></li>
+<li class="chapter" data-level="3.2.3" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#peer-problems-score"><i class="fa fa-check"></i><b>3.2.3</b> Peer problems score</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="basic-data-summaries-and-explorations.html"><a href="basic-data-summaries-and-explorations.html#first-plotting-of-the-data"><i class="fa fa-check"></i><b>3.3</b> First plotting of the data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis</a><ul>
+<li class="chapter" data-level="4.1" data-path="analysis.html"><a href="analysis.html#poisson-regression"><i class="fa fa-check"></i><b>4.1</b> Poisson regression</a></li>
+<li class="chapter" data-level="4.2" data-path="analysis.html"><a href="analysis.html#negative-binomial-model"><i class="fa fa-check"></i><b>4.2</b> Negative Binomial Model</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="analysis.html"><a href="analysis.html#new-reduced-nb-model"><i class="fa fa-check"></i><b>4.2.1</b> New reduced NB model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="analysis.html"><a href="analysis.html#plotting-of-the-model-predictions"><i class="fa fa-check"></i><b>4.2.2</b> Plotting of the model predictions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="analysis.html"><a href="analysis.html#hurdle"><i class="fa fa-check"></i><b>4.3</b> Hurdle</a></li>
+<li class="chapter" data-level="4.4" data-path="analysis.html"><a href="analysis.html#clm"><i class="fa fa-check"></i><b>4.4</b> CLM</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="analysis.html"><a href="analysis.html#plotting-of-the-final-model"><i class="fa fa-check"></i><b>4.4.1</b> Plotting of the final model</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Preparation and Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analysis" class="section level1">
+<h1><span class="header-section-number">4</span> Analysis</h1>
+<div id="poisson-regression" class="section level2">
+<h2><span class="header-section-number">4.1</span> Poisson regression</h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="analysis.html#cb30-1"></a>adolescents<span class="op">$</span>SDQ_peer &lt;-<span class="st"> </span><span class="kw">as.factor</span>(adolescents<span class="op">$</span>SDQ_peer)</span>
+<span id="cb30-2"><a href="analysis.html#cb30-2"></a></span>
+<span id="cb30-3"><a href="analysis.html#cb30-3"></a>interaction_model_poisson &lt;-<span class="st"> </span><span class="kw">glm</span>(SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>cumulative_trauma<span class="op">*</span>SDQ_peer, <span class="dt">data=</span>adolescents, <span class="dt">family=</span><span class="kw">poisson</span>(<span class="dt">link=</span><span class="st">&quot;log&quot;</span>))</span>
+<span id="cb30-4"><a href="analysis.html#cb30-4"></a></span>
+<span id="cb30-5"><a href="analysis.html#cb30-5"></a>poisson_summary &lt;-<span class="st"> </span><span class="kw">summary.glm</span>(interaction_model_poisson)</span>
+<span id="cb30-6"><a href="analysis.html#cb30-6"></a><span class="kw">summ</span>(interaction_model_poisson)</span></code></pre></div>
+<pre><code>## MODEL INFO:
+## Observations: 4485
+## Dependent Variable: SDQ_30
+## Type: Generalized linear model
+##   Family: poisson 
+##   Link function: log 
+## 
+## MODEL FIT:
+## χ²(21) = 5277.86, p = 0.00
+## Pseudo-R² (Cragg-Uhler) = 0.69
+## Pseudo-R² (McFadden) = 0.16
+## AIC = 26936.51, BIC = 27077.50 
+## 
+## Standard errors: MLE
+## -----------------------------------------------------------------
+##                                       Est.   S.E.   z val.      p
+## ---------------------------------- ------- ------ -------- ------
+## (Intercept)                           0.86   0.02    50.86   0.00
+## cumulative_trauma                     0.08   0.01    11.66   0.00
+## SDQ_peer1                             0.27   0.03    10.27   0.00
+## SDQ_peer2                             0.51   0.03    18.33   0.00
+## SDQ_peer3                             0.75   0.03    22.06   0.00
+## SDQ_peer4                             1.05   0.04    29.23   0.00
+## SDQ_peer5                             1.48   0.05    32.54   0.00
+## SDQ_peer6                             1.61   0.06    28.46   0.00
+## SDQ_peer7                             1.56   0.09    18.25   0.00
+## SDQ_peer8                             1.93   0.16    11.95   0.00
+## SDQ_peer9                             2.09   0.15    13.63   0.00
+## SDQ_peer10                            1.79   0.18     9.92   0.00
+## cumulative_trauma:SDQ_peer1           0.01   0.01     1.32   0.19
+## cumulative_trauma:SDQ_peer2           0.01   0.01     1.31   0.19
+## cumulative_trauma:SDQ_peer3           0.01   0.01     1.00   0.32
+## cumulative_trauma:SDQ_peer4          -0.01   0.01    -1.26   0.21
+## cumulative_trauma:SDQ_peer5          -0.04   0.01    -2.93   0.00
+## cumulative_trauma:SDQ_peer6          -0.10   0.01    -6.66   0.00
+## cumulative_trauma:SDQ_peer7          -0.02   0.02    -1.42   0.16
+## cumulative_trauma:SDQ_peer8          -0.11   0.04    -3.02   0.00
+## cumulative_trauma:SDQ_peer9          -0.12   0.05    -2.59   0.01
+## cumulative_trauma:SDQ_peer10         -0.06   0.03    -2.06   0.04
+## -----------------------------------------------------------------</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="analysis.html#cb32-1"></a><span class="co">#checking on overdispersion</span></span>
+<span id="cb32-2"><a href="analysis.html#cb32-2"></a>dispersion_poisson &lt;-<span class="st"> </span>poisson_summary<span class="op">$</span>deviance <span class="op">/</span><span class="st"> </span>poisson_summary<span class="op">$</span>df.residual</span>
+<span id="cb32-3"><a href="analysis.html#cb32-3"></a><span class="cf">if</span> (dispersion_poisson <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>){</span>
+<span id="cb32-4"><a href="analysis.html#cb32-4"></a>  <span class="kw">print</span>(<span class="st">&quot;Overdispersion!&quot;</span>)</span>
+<span id="cb32-5"><a href="analysis.html#cb32-5"></a>} <span class="cf">else</span> {</span>
+<span id="cb32-6"><a href="analysis.html#cb32-6"></a>  <span class="kw">print</span>(<span class="st">&quot;You good on dispersion.&quot;</span>)</span>
+<span id="cb32-7"><a href="analysis.html#cb32-7"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Overdispersion!&quot;</code></pre>
+</div>
+<div id="negative-binomial-model" class="section level2">
+<h2><span class="header-section-number">4.2</span> Negative Binomial Model</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="analysis.html#cb34-1"></a>fit_nbinom &lt;-<span class="st"> </span><span class="kw">fitdist</span>(adolescents<span class="op">$</span>SDQ_<span class="dv">30</span>, <span class="st">&quot;nbinom&quot;</span>)</span>
+<span id="cb34-2"><a href="analysis.html#cb34-2"></a><span class="kw">plot</span>(fit_nbinom)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="analysis.html#cb35-1"></a>interaction_model_negbi &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(<span class="dt">formula =</span> SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>cumulative_trauma <span class="op">*</span><span class="st"> </span>SDQ_peer, <span class="dt">data =</span> adolescents)</span>
+<span id="cb35-2"><a href="analysis.html#cb35-2"></a></span>
+<span id="cb35-3"><a href="analysis.html#cb35-3"></a>nb_summary &lt;-<span class="st"> </span><span class="kw">summary</span>(interaction_model_negbi)</span>
+<span id="cb35-4"><a href="analysis.html#cb35-4"></a>nb_summary </span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm.nb(formula = SDQ_30 ~ cumulative_trauma * SDQ_peer, data = adolescents, 
+##     init.theta = 1.344141107, link = log)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.5429  -1.0238  -0.2453   0.3778   2.7769  
+## 
+## Coefficients:
+##                               Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)                   0.856927   0.028484  30.085  &lt; 2e-16 ***
+## cumulative_trauma             0.085567   0.013667   6.261 3.83e-10 ***
+## SDQ_peer1                     0.261057   0.046717   5.588 2.30e-08 ***
+## SDQ_peer2                     0.500779   0.052890   9.468  &lt; 2e-16 ***
+## SDQ_peer3                     0.747819   0.072048  10.379  &lt; 2e-16 ***
+## SDQ_peer4                     1.052307   0.084689  12.426  &lt; 2e-16 ***
+## SDQ_peer5                     1.485519   0.130774  11.359  &lt; 2e-16 ***
+## SDQ_peer6                     1.618485   0.170543   9.490  &lt; 2e-16 ***
+## SDQ_peer7                     1.569062   0.270354   5.804 6.49e-09 ***
+## SDQ_peer8                     1.952841   0.564844   3.457 0.000546 ***
+## SDQ_peer9                     2.088179   0.591936   3.528 0.000419 ***
+## SDQ_peer10                    1.790856   0.618733   2.894 0.003799 ** 
+## cumulative_trauma:SDQ_peer1   0.017591   0.020673   0.851 0.394817    
+## cumulative_trauma:SDQ_peer2   0.014930   0.021108   0.707 0.479361    
+## cumulative_trauma:SDQ_peer3   0.008245   0.024876   0.331 0.740294    
+## cumulative_trauma:SDQ_peer4  -0.016170   0.027036  -0.598 0.549774    
+## cumulative_trauma:SDQ_peer5  -0.040503   0.035679  -1.135 0.256283    
+## cumulative_trauma:SDQ_peer6  -0.100564   0.040797  -2.465 0.013703 *  
+## cumulative_trauma:SDQ_peer7  -0.026008   0.053310  -0.488 0.625654    
+## cumulative_trauma:SDQ_peer8  -0.113766   0.118016  -0.964 0.335052    
+## cumulative_trauma:SDQ_peer9  -0.120232   0.173111  -0.695 0.487347    
+## cumulative_trauma:SDQ_peer10 -0.061492   0.099607  -0.617 0.537003    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for Negative Binomial(1.3441) family taken to be 1)
+## 
+##     Null deviance: 6325.4  on 4484  degrees of freedom
+## Residual deviance: 5185.5  on 4463  degrees of freedom
+## AIC: 21821
+## 
+## Number of Fisher Scoring iterations: 1
+## 
+## 
+##               Theta:  1.3441 
+##           Std. Err.:  0.0439 
+## 
+##  2 x log-likelihood:  -21775.4180</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="analysis.html#cb37-1"></a><span class="co">#checking for overdispersion</span></span>
+<span id="cb37-2"><a href="analysis.html#cb37-2"></a>dispersion_nb &lt;-<span class="st"> </span>nb_summary<span class="op">$</span>deviance <span class="op">/</span><span class="st"> </span>nb_summary<span class="op">$</span>df.residual</span>
+<span id="cb37-3"><a href="analysis.html#cb37-3"></a></span>
+<span id="cb37-4"><a href="analysis.html#cb37-4"></a><span class="cf">if</span> (dispersion_nb <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>){</span>
+<span id="cb37-5"><a href="analysis.html#cb37-5"></a>  <span class="kw">print</span>(<span class="st">&quot;overdispersion!&quot;</span>)</span>
+<span id="cb37-6"><a href="analysis.html#cb37-6"></a>} <span class="cf">else</span> {</span>
+<span id="cb37-7"><a href="analysis.html#cb37-7"></a>  <span class="kw">print</span>(<span class="st">&quot;You good on dispersion.&quot;</span>)</span>
+<span id="cb37-8"><a href="analysis.html#cb37-8"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;You good on dispersion.&quot;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="analysis.html#cb39-1"></a><span class="co">#checking model fit</span></span>
+<span id="cb39-2"><a href="analysis.html#cb39-2"></a><span class="kw">hist</span>(<span class="kw">rstandard</span>(interaction_model_negbi), <span class="dt">main =</span> <span class="st">&quot;Distribution of residuals&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Residuals&quot;</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="analysis.html#cb40-1"></a><span class="kw">plot</span>(interaction_model_negbi,<span class="dv">2</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="analysis.html#cb41-1"></a><span class="kw">plot</span>(<span class="kw">rstandard</span>(interaction_model_negbi),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-12-3.png" width="672" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="analysis.html#cb42-1"></a><span class="kw">rootogram</span>(interaction_model_negbi, <span class="dt">max=</span><span class="dv">30</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-12-4.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="analysis.html#cb43-1"></a><span class="co">#checking against reduced model</span></span>
+<span id="cb43-2"><a href="analysis.html#cb43-2"></a>control_model_negbi &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>cumulative_trauma<span class="op">+</span>SDQ_peer, <span class="dt">data=</span>adolescents)</span>
+<span id="cb43-3"><a href="analysis.html#cb43-3"></a></span>
+<span id="cb43-4"><a href="analysis.html#cb43-4"></a></span>
+<span id="cb43-5"><a href="analysis.html#cb43-5"></a><span class="co">#checking difference between the two models</span></span>
+<span id="cb43-6"><a href="analysis.html#cb43-6"></a>LL_interaction &lt;-<span class="st"> </span><span class="kw">logLik</span>(interaction_model_negbi)</span>
+<span id="cb43-7"><a href="analysis.html#cb43-7"></a>LL_control &lt;-<span class="st"> </span><span class="kw">logLik</span>(control_model_negbi)</span>
+<span id="cb43-8"><a href="analysis.html#cb43-8"></a>delta_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(LL_interaction<span class="op">-</span>LL_control)</span>
+<span id="cb43-9"><a href="analysis.html#cb43-9"></a><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(delta_<span class="dv">2</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## &#39;log Lik.&#39; 0.2824302 (df=23)</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="analysis.html#cb45-1"></a><span class="co">#double check </span></span>
+<span id="cb45-2"><a href="analysis.html#cb45-2"></a><span class="kw">anova</span>(interaction_model_negbi, control_model_negbi, <span class="dt">test=</span><span class="st">&quot;LRT&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in anova.negbin(interaction_model_negbi, control_model_negbi, test = &quot;LRT&quot;): only Chi-squared
+## LR tests are implemented</code></pre>
+<pre><code>## Likelihood ratio tests of Negative Binomial Models
+## 
+## Response: SDQ_30
+##                          Model    theta Resid. df    2 x log-lik.   Test    df LR stat.   Pr(Chi)
+## 1 cumulative_trauma + SDQ_peer 1.336762      4473       -21787.46                                
+## 2 cumulative_trauma * SDQ_peer 1.344141      4463       -21775.42 1 vs 2    10 12.03937 0.2824302</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="analysis.html#cb48-1"></a><span class="co">#checking with each predictor</span></span>
+<span id="cb48-2"><a href="analysis.html#cb48-2"></a></span>
+<span id="cb48-3"><a href="analysis.html#cb48-3"></a><span class="co">#cumulative trauma only</span></span>
+<span id="cb48-4"><a href="analysis.html#cb48-4"></a>CT_model_negbi &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>cumulative_trauma, <span class="dt">data=</span>adolescents)</span>
+<span id="cb48-5"><a href="analysis.html#cb48-5"></a></span>
+<span id="cb48-6"><a href="analysis.html#cb48-6"></a><span class="co">#checking difference between the two models</span></span>
+<span id="cb48-7"><a href="analysis.html#cb48-7"></a>LL_var &lt;-<span class="st"> </span><span class="kw">logLik</span>(CT_model_negbi)</span>
+<span id="cb48-8"><a href="analysis.html#cb48-8"></a>LL_control &lt;-<span class="st"> </span><span class="kw">logLik</span>(control_model_negbi)</span>
+<span id="cb48-9"><a href="analysis.html#cb48-9"></a>delta_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(LL_control<span class="op">-</span>LL_var)</span>
+<span id="cb48-10"><a href="analysis.html#cb48-10"></a><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(delta_<span class="dv">2</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## &#39;log Lik.&#39; 0 (df=13)</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="analysis.html#cb50-1"></a><span class="co">#double check </span></span>
+<span id="cb50-2"><a href="analysis.html#cb50-2"></a><span class="kw">anova</span>(control_model_negbi, CT_model_negbi, <span class="dt">test=</span><span class="st">&quot;LRT&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in anova.negbin(control_model_negbi, CT_model_negbi, test = &quot;LRT&quot;): only Chi-squared LR tests
+## are implemented</code></pre>
+<pre><code>## Likelihood ratio tests of Negative Binomial Models
+## 
+## Response: SDQ_30
+##                          Model    theta Resid. df    2 x log-lik.   Test    df LR stat. Pr(Chi)
+## 1            cumulative_trauma 1.045221      4483       -22442.40                              
+## 2 cumulative_trauma + SDQ_peer 1.336762      4473       -21787.46 1 vs 2    10 654.9378       0</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="analysis.html#cb53-1"></a><span class="co">#peer problems only</span></span>
+<span id="cb53-2"><a href="analysis.html#cb53-2"></a>PP_model_negbi &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>SDQ_peer, <span class="dt">data=</span>adolescents)</span>
+<span id="cb53-3"><a href="analysis.html#cb53-3"></a></span>
+<span id="cb53-4"><a href="analysis.html#cb53-4"></a><span class="co">#checking difference between the two models</span></span>
+<span id="cb53-5"><a href="analysis.html#cb53-5"></a>LL_var &lt;-<span class="st"> </span><span class="kw">logLik</span>(PP_model_negbi)</span>
+<span id="cb53-6"><a href="analysis.html#cb53-6"></a>LL_control &lt;-<span class="st"> </span><span class="kw">logLik</span>(control_model_negbi)</span>
+<span id="cb53-7"><a href="analysis.html#cb53-7"></a>delta_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(LL_control<span class="op">-</span>LL_var)</span>
+<span id="cb53-8"><a href="analysis.html#cb53-8"></a><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(delta_<span class="dv">2</span>, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;log Lik.&#39; 0 (df=13)</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="analysis.html#cb55-1"></a><span class="co">#double check </span></span>
+<span id="cb55-2"><a href="analysis.html#cb55-2"></a><span class="kw">anova</span>(control_model_negbi, PP_model_negbi, <span class="dt">test=</span><span class="st">&quot;LRT&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in anova.negbin(control_model_negbi, PP_model_negbi, test = &quot;LRT&quot;): only Chi-squared LR tests
+## are implemented</code></pre>
+<pre><code>## Likelihood ratio tests of Negative Binomial Models
+## 
+## Response: SDQ_30
+##                          Model    theta Resid. df    2 x log-lik.   Test    df LR stat. Pr(Chi)
+## 1                     SDQ_peer 1.264198      4474       -21931.11                              
+## 2 cumulative_trauma + SDQ_peer 1.336762      4473       -21787.46 1 vs 2     1 143.6483       0</code></pre>
+<div id="new-reduced-nb-model" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> New reduced NB model</h3>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="analysis.html#cb58-1"></a><span class="kw">hist</span>(<span class="kw">rstandard</span>(control_model_negbi), <span class="dt">main =</span> <span class="st">&quot;Distribution of residuals&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Residuals&quot;</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="analysis.html#cb59-1"></a><span class="kw">plot</span>(control_model_negbi,<span class="dv">2</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="analysis.html#cb60-1"></a><span class="kw">plot</span>(<span class="kw">rstandard</span>(control_model_negbi),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-13-3.png" width="672" /></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="analysis.html#cb61-1"></a><span class="kw">rootogram</span>(control_model_negbi, <span class="dt">max=</span><span class="dv">30</span>, <span class="dt">main =</span> <span class="st">&quot;Negative Binomial Model: Observed vs Fitted Values&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;SDQ 30&quot;</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-13-4.png" width="672" /></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="analysis.html#cb62-1"></a><span class="co">#playing with different summaries</span></span>
+<span id="cb62-2"><a href="analysis.html#cb62-2"></a>summary_negbi &lt;-<span class="st"> </span><span class="kw">summary</span>(control_model_negbi)</span>
+<span id="cb62-3"><a href="analysis.html#cb62-3"></a>summary_negbi </span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm.nb(formula = SDQ_30 ~ cumulative_trauma + SDQ_peer, data = adolescents, 
+##     init.theta = 1.33676164, link = log)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.6038  -1.0401  -0.2651   0.4052   2.7706  
+## 
+## Coefficients:
+##                   Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)       0.857251   0.025797  33.231  &lt; 2e-16 ***
+## cumulative_trauma 0.085256   0.007147  11.928  &lt; 2e-16 ***
+## SDQ_peer1         0.284552   0.039605   7.185 6.74e-13 ***
+## SDQ_peer2         0.525502   0.043959  11.954  &lt; 2e-16 ***
+## SDQ_peer3         0.764840   0.057464  13.310  &lt; 2e-16 ***
+## SDQ_peer4         1.017132   0.065887  15.438  &lt; 2e-16 ***
+## SDQ_peer5         1.386776   0.099072  13.998  &lt; 2e-16 ***
+## SDQ_peer6         1.340942   0.122499  10.947  &lt; 2e-16 ***
+## SDQ_peer7         1.469556   0.177306   8.288  &lt; 2e-16 ***
+## SDQ_peer8         1.533308   0.320782   4.780 1.75e-06 ***
+## SDQ_peer9         1.776825   0.340303   5.221 1.78e-07 ***
+## SDQ_peer10        1.503870   0.369893   4.066 4.79e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for Negative Binomial(1.3368) family taken to be 1)
+## 
+##     Null deviance: 6304.8  on 4484  degrees of freedom
+## Residual deviance: 5181.8  on 4473  degrees of freedom
+## AIC: 21813
+## 
+## Number of Fisher Scoring iterations: 1
+## 
+## 
+##               Theta:  1.3368 
+##           Std. Err.:  0.0435 
+## 
+##  2 x log-likelihood:  -21787.4570</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="analysis.html#cb64-1"></a><span class="kw">anova</span>(control_model_negbi)</span></code></pre></div>
+<pre><code>## Warning in anova.negbin(control_model_negbi): tests made without re-estimating &#39;theta&#39;</code></pre>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model: Negative Binomial(1.3368), link: log
+## 
+## Response: SDQ_30
+## 
+## Terms added sequentially (first to last)
+## 
+## 
+##                   Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    
+## NULL                               4484     6304.8              
+## cumulative_trauma  1   398.83      4483     5906.0 &lt; 2.2e-16 ***
+## SDQ_peer          10   724.18      4473     5181.8 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="analysis.html#cb67-1"></a><span class="kw">summ</span>(control_model_negbi)</span></code></pre></div>
+<pre><code>## MODEL INFO:
+## Observations: 4485
+## Dependent Variable: SDQ_30
+## Type: Generalized linear model
+##   Family: Negative Binomial(1.3368) 
+##   Link function: log 
+## 
+## MODEL FIT:
+## χ²() = , p = 
+## Pseudo-R² (Cragg-Uhler) = 0.20
+## Pseudo-R² (McFadden) = 0.04
+## AIC = 21813.46, BIC = 21896.77 
+## 
+## Standard errors: MLE
+## -----------------------------------------------------
+##                           Est.   S.E.   z val.      p
+## ----------------------- ------ ------ -------- ------
+## (Intercept)               0.86   0.03    33.23   0.00
+## cumulative_trauma         0.09   0.01    11.93   0.00
+## SDQ_peer1                 0.28   0.04     7.18   0.00
+## SDQ_peer2                 0.53   0.04    11.95   0.00
+## SDQ_peer3                 0.76   0.06    13.31   0.00
+## SDQ_peer4                 1.02   0.07    15.44   0.00
+## SDQ_peer5                 1.39   0.10    14.00   0.00
+## SDQ_peer6                 1.34   0.12    10.95   0.00
+## SDQ_peer7                 1.47   0.18     8.29   0.00
+## SDQ_peer8                 1.53   0.32     4.78   0.00
+## SDQ_peer9                 1.78   0.34     5.22   0.00
+## SDQ_peer10                1.50   0.37     4.07   0.00
+## -----------------------------------------------------</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="analysis.html#cb69-1"></a><span class="kw">export_summs</span>(control_model_negbi)</span></code></pre></div>
+<pre><code>## Warning: Tidiers for objects of class negbin are not maintained by the broom team, and are only
+## supported through the glm tidier method. Please be cautious in interpreting and reporting broom
+## output.</code></pre>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-14">
+<caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-14">Table 4.1: </span> </caption><col><col><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Model 1</th></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(Intercept)</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.86 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.03)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">cumulative_trauma</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.09 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.01)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer1</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.28 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.04)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer2</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.53 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.04)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer3</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.76 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.06)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer4</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.02 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.07)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer5</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.39 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.10)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer6</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.34 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.12)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer7</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.47 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.18)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer8</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.53 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.32)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer9</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.78 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.34)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SDQ_peer10</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.50 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.37)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">N</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4485&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">AIC</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">21813.46&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">BIC</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">21896.77&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Pseudo R2</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.20&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th colspan="2" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"> *** p &lt; 0.001;  ** p &lt; 0.01;  * p &lt; 0.05.</th></tr>
+</table>
+
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="analysis.html#cb71-1"></a><span class="kw">summary</span>(<span class="kw">allEffects</span>(control_model_negbi))</span></code></pre></div>
+<pre><code>##  model: SDQ_30 ~ cumulative_trauma + SDQ_peer
+## 
+##  cumulative_trauma effect
+## cumulative_trauma
+##        0        3        6        8       10 
+## 3.284668 4.241997 5.478343 6.496834 7.704676 
+## 
+##  Lower 95 Percent Confidence Limits
+## cumulative_trauma
+##        0        3        6        8       10 
+## 3.168551 4.087494 5.104629 5.897549 6.807949 
+## 
+##  Upper 95 Percent Confidence Limits
+## cumulative_trauma
+##        0        3        6        8       10 
+## 3.405040 4.402339 5.879416 7.157016 8.719517 
+## 
+##  SDQ_peer effect
+## SDQ_peer
+##         0         1         2         3         4         5         6         7         8         9 
+##  2.644244  3.514639  4.472232  5.681555  7.312001 10.582076 10.108006 11.495331 12.252055 15.630282 
+##        10 
+## 11.896628 
+## 
+##  Lower 95 Percent Confidence Limits
+## SDQ_peer
+##        0        1        2        3        4        5        6        7        8        9       10 
+## 2.518793 3.307984 4.165944 5.134478 6.490205 8.771582 7.993361 8.151591 6.546579 8.036194 5.772036 
+## 
+##  Upper 95 Percent Confidence Limits
+## SDQ_peer
+##         0         1         2         3         4         5         6         7         8         9 
+##  2.775944  3.734205  4.801039  6.286923  8.237854 12.766265 12.782080 16.210656 22.929971 30.400672 
+##        10 
+## 24.519905</code></pre>
+</div>
+<div id="plotting-of-the-model-predictions" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Plotting of the model predictions</h3>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="analysis.html#cb73-1"></a>model_predict &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">ggpredict</span>(control_model_negbi,  <span class="dt">terms =</span> <span class="kw">c</span>(<span class="st">&quot;cumulative_trauma&quot;</span>, <span class="st">&quot;SDQ_peer&quot;</span>)))</span>
+<span id="cb73-2"><a href="analysis.html#cb73-2"></a></span>
+<span id="cb73-3"><a href="analysis.html#cb73-3"></a>model_graph &lt;-<span class="st"> </span><span class="kw">ggplot</span>(model_predict, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> predicted, <span class="dt">colour =</span> group, <span class="dt">fill =</span> group)) <span class="op">+</span></span>
+<span id="cb73-4"><a href="analysis.html#cb73-4"></a><span class="st">  </span><span class="co"># plotting the prediction</span></span>
+<span id="cb73-5"><a href="analysis.html#cb73-5"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.75</span>) <span class="op">+</span></span>
+<span id="cb73-6"><a href="analysis.html#cb73-6"></a><span class="st">  </span><span class="co"># plotting the confidence levels</span></span>
+<span id="cb73-7"><a href="analysis.html#cb73-7"></a><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> conf.low, <span class="dt">ymax =</span> conf.high, <span class="dt">xmin=</span><span class="dv">0</span>, <span class="dt">xmax=</span><span class="dv">12</span>), <span class="dt">alpha =</span> <span class="fl">.1</span>, <span class="dt">linetype=</span><span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb73-8"><a href="analysis.html#cb73-8"></a><span class="st">  </span><span class="co"># setting up color and fill palette - scico tokyo </span></span>
+<span id="cb73-9"><a href="analysis.html#cb73-9"></a><span class="st">  </span><span class="kw">scale_color_scico_d</span>(<span class="dt">palette =</span> <span class="st">&#39;batlow&#39;</span>, <span class="dt">begin=</span><span class="dv">0</span>, <span class="dt">end=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb73-10"><a href="analysis.html#cb73-10"></a><span class="st">  </span><span class="kw">scale_fill_scico_d</span>(<span class="dt">palette =</span> <span class="st">&#39;batlow&#39;</span>, <span class="dt">begin=</span><span class="dv">0</span>, <span class="dt">end=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb73-11"><a href="analysis.html#cb73-11"></a><span class="st">  </span><span class="co"># changing limits, breaks and labels of both axis </span></span>
+<span id="cb73-12"><a href="analysis.html#cb73-12"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">12</span>)) <span class="op">+</span></span>
+<span id="cb73-13"><a href="analysis.html#cb73-13"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>)) <span class="op">+</span></span>
+<span id="cb73-14"><a href="analysis.html#cb73-14"></a><span class="st">  </span><span class="co"># background setting</span></span>
+<span id="cb73-15"><a href="analysis.html#cb73-15"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb73-16"><a href="analysis.html#cb73-16"></a><span class="st">  </span><span class="co"># changing labels and title</span></span>
+<span id="cb73-17"><a href="analysis.html#cb73-17"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Cumulative trauma&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Negative Binomial Model Predictions&quot;</span>, </span>
+<span id="cb73-18"><a href="analysis.html#cb73-18"></a>      <span class="dt">color=</span><span class="st">&quot;Peer </span><span class="ch">\n</span><span class="st">problems&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;Peer </span><span class="ch">\n</span><span class="st">problems&quot;</span>) <span class="op">+</span></span>
+<span id="cb73-19"><a href="analysis.html#cb73-19"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">11</span>), <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>), </span>
+<span id="cb73-20"><a href="analysis.html#cb73-20"></a>        <span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>(),</span>
+<span id="cb73-21"><a href="analysis.html#cb73-21"></a>        <span class="dt">legend.title =</span> <span class="kw">element_text</span>( <span class="dt">size=</span><span class="dv">10</span>), <span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>), <span class="dt">legend.key.size =</span> <span class="kw">unit</span>(<span class="fl">0.5</span>, <span class="st">&#39;cm&#39;</span>),</span>
+<span id="cb73-22"><a href="analysis.html#cb73-22"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>)) <span class="op">+</span></span>
+<span id="cb73-23"><a href="analysis.html#cb73-23"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">30</span>, <span class="dt">size=</span><span class="fl">0.5</span>, <span class="dt">linetype=</span><span class="dv">2</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>)</span>
+<span id="cb73-24"><a href="analysis.html#cb73-24"></a></span>
+<span id="cb73-25"><a href="analysis.html#cb73-25"></a>model_graph</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="analysis.html#cb74-1"></a><span class="kw">ggsave</span>(<span class="st">&quot;model_graph.png&quot;</span>, <span class="dt">plot=</span>model_graph, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="dv">11</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb74-2"><a href="analysis.html#cb74-2"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="analysis.html#cb75-1"></a>data_prediction &lt;-<span class="st"> </span>distribution <span class="op">+</span><span class="st"> </span>model_graph <span class="op">&amp;</span></span>
+<span id="cb75-2"><a href="analysis.html#cb75-2"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.tag =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>), <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;italic&quot;</span>)) <span class="op">&amp;</span></span>
+<span id="cb75-3"><a href="analysis.html#cb75-3"></a><span class="st">  </span><span class="kw">plot_annotation</span>(<span class="dt">tag_levels =</span> <span class="st">&#39;A&#39;</span>, </span>
+<span id="cb75-4"><a href="analysis.html#cb75-4"></a>                  <span class="dt">title=</span><span class="st">&quot;The effects of cumulative trauma and peer problems on SDQ 30 score&quot;</span>,</span>
+<span id="cb75-5"><a href="analysis.html#cb75-5"></a>                  <span class="dt">theme =</span> <span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>)))</span>
+<span id="cb75-6"><a href="analysis.html#cb75-6"></a></span>
+<span id="cb75-7"><a href="analysis.html#cb75-7"></a><span class="kw">ggsave</span>(<span class="st">&quot;data_prediction.png&quot;</span>, <span class="dt">plot=</span>data_prediction, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="fl">8.5</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb75-8"><a href="analysis.html#cb75-8"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span>
+<span id="cb75-9"><a href="analysis.html#cb75-9"></a></span>
+<span id="cb75-10"><a href="analysis.html#cb75-10"></a>data_prediction</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+</div>
+<div id="hurdle" class="section level2">
+<h2><span class="header-section-number">4.3</span> Hurdle</h2>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="analysis.html#cb76-1"></a>interaction_model_hurdle &lt;-<span class="st"> </span><span class="kw">hurdle</span>(<span class="dt">formula =</span> SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>cumulative_trauma <span class="op">*</span><span class="st"> </span>SDQ_peer, <span class="dt">data =</span> adolescents, <span class="dt">dist =</span><span class="st">&quot;geometric&quot;</span>)</span>
+<span id="cb76-2"><a href="analysis.html#cb76-2"></a></span>
+<span id="cb76-3"><a href="analysis.html#cb76-3"></a>hurdle_summary &lt;-<span class="st"> </span><span class="kw">summary</span>(interaction_model_hurdle)</span>
+<span id="cb76-4"><a href="analysis.html#cb76-4"></a>hurdle_summary </span></code></pre></div>
+<pre><code>## 
+## Call:
+## hurdle(formula = SDQ_30 ~ cumulative_trauma * SDQ_peer, data = adolescents, dist = &quot;geometric&quot;)
+## 
+## Pearson residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.0348 -0.6768 -0.1980  0.3980  4.7273 
+## 
+## Count model coefficients (truncated geometric with log link):
+##                               Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)                   0.918105   0.037995  24.164  &lt; 2e-16 ***
+## cumulative_trauma             0.067707   0.017545   3.859 0.000114 ***
+## SDQ_peer1                     0.159597   0.060752   2.627 0.008613 ** 
+## SDQ_peer2                     0.429727   0.067674   6.350 2.15e-10 ***
+## SDQ_peer3                     0.622528   0.088234   7.055 1.72e-12 ***
+## SDQ_peer4                     0.946328   0.102346   9.246  &lt; 2e-16 ***
+## SDQ_peer5                     1.325038   0.150027   8.832  &lt; 2e-16 ***
+## SDQ_peer6                     1.491574   0.201927   7.387 1.51e-13 ***
+## SDQ_peer7                     1.416996   0.310067   4.570 4.88e-06 ***
+## SDQ_peer8                     1.832499   0.698126   2.625 0.008668 ** 
+## SDQ_peer9                     1.972574   0.666234   2.961 0.003069 ** 
+## SDQ_peer10                    1.656514   0.709928   2.333 0.019630 *  
+## cumulative_trauma:SDQ_peer1   0.030684   0.026414   1.162 0.245382    
+## cumulative_trauma:SDQ_peer2   0.017687   0.026373   0.671 0.502462    
+## cumulative_trauma:SDQ_peer3   0.022493   0.030034   0.749 0.453909    
+## cumulative_trauma:SDQ_peer4  -0.004587   0.032400  -0.142 0.887405    
+## cumulative_trauma:SDQ_peer5  -0.014472   0.041219  -0.351 0.725520    
+## cumulative_trauma:SDQ_peer6  -0.085251   0.049272  -1.730 0.083595 .  
+## cumulative_trauma:SDQ_peer7  -0.003872   0.061457  -0.063 0.949760    
+## cumulative_trauma:SDQ_peer8  -0.098607   0.150179  -0.657 0.511440    
+## cumulative_trauma:SDQ_peer9  -0.104305   0.192693  -0.541 0.588299    
+## cumulative_trauma:SDQ_peer10 -0.042025   0.114432  -0.367 0.713431    
+## Zero hurdle model coefficients (binomial with logit link):
+##                                Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)                     0.71197    0.05713  12.461  &lt; 2e-16 ***
+## cumulative_trauma               0.13694    0.03374   4.058 4.95e-05 ***
+## SDQ_peer1                       0.52452    0.10554   4.970 6.69e-07 ***
+## SDQ_peer2                       0.64379    0.13030   4.941 7.77e-07 ***
+## SDQ_peer3                       1.21153    0.22942   5.281 1.29e-07 ***
+## SDQ_peer4                       1.47773    0.30964   4.772 1.82e-06 ***
+## SDQ_peer5                       4.98031    1.92053   2.593  0.00951 ** 
+## SDQ_peer6                       3.20098    1.37222   2.333  0.01966 *  
+## SDQ_peer7                      14.85410  709.82840   0.021  0.98330    
+## SDQ_peer8                      14.85410 1504.04801   0.010  0.99212    
+## SDQ_peer9                      14.85410 1588.82123   0.009  0.99254    
+## SDQ_peer10                     14.85410 1645.40372   0.009  0.99280    
+## cumulative_trauma:SDQ_peer1     0.02236    0.05990   0.373  0.70895    
+## cumulative_trauma:SDQ_peer2     0.13254    0.07636   1.736  0.08259 .  
+## cumulative_trauma:SDQ_peer3     0.11767    0.12010   0.980  0.32719    
+## cumulative_trauma:SDQ_peer4     0.16288    0.16225   1.004  0.31544    
+## cumulative_trauma:SDQ_peer5    -0.42831    0.28401  -1.508  0.13153    
+## cumulative_trauma:SDQ_peer6    -0.08581    0.34979  -0.245  0.80621    
+## cumulative_trauma:SDQ_peer7    -0.13694  137.33738  -0.001  0.99920    
+## cumulative_trauma:SDQ_peer8    -0.13694  311.26397   0.000  0.99965    
+## cumulative_trauma:SDQ_peer9    -0.13694  462.83439   0.000  0.99976    
+## cumulative_trauma:SDQ_peer10   -0.13694  263.52271  -0.001  0.99959    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 
+## 
+## Number of iterations in BFGS optimization: 27 
+## Log-likelihood: -1.089e+04 on 44 Df</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="analysis.html#cb78-1"></a><span class="kw">qqrplot</span>(interaction_model_hurdle)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="analysis.html#cb79-1"></a><span class="kw">rootogram</span>(interaction_model_hurdle, <span class="dt">max =</span> <span class="dv">30</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="analysis.html#cb80-1"></a><span class="kw">hist</span>(interaction_model_hurdle<span class="op">$</span>residuals)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-17-3.png" width="672" /></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="analysis.html#cb81-1"></a>control_model_hurdle &lt;-<span class="st"> </span><span class="kw">hurdle</span>(<span class="dt">formula =</span> SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>cumulative_trauma <span class="op">+</span><span class="st"> </span>SDQ_peer, <span class="dt">data =</span> adolescents, <span class="dt">dist =</span><span class="st">&quot;geometric&quot;</span>)</span>
+<span id="cb81-2"><a href="analysis.html#cb81-2"></a></span>
+<span id="cb81-3"><a href="analysis.html#cb81-3"></a>LL_int &lt;-<span class="st"> </span><span class="kw">logLik</span>(interaction_model_hurdle)</span>
+<span id="cb81-4"><a href="analysis.html#cb81-4"></a>LL_control &lt;-<span class="st"> </span><span class="kw">logLik</span>(control_model_hurdle)</span>
+<span id="cb81-5"><a href="analysis.html#cb81-5"></a>delta_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(LL_int<span class="op">-</span>LL_control)</span>
+<span id="cb81-6"><a href="analysis.html#cb81-6"></a><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(delta_<span class="dv">2</span>, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;log Lik.&#39; 0.0001223055 (df=44)</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="analysis.html#cb83-1"></a><span class="kw">AIC</span>(control_model_negbi, control_model_hurdle)</span></code></pre></div>
+<pre><code>##                      df      AIC
+## control_model_negbi  13 21813.46
+## control_model_hurdle 24 21849.13</code></pre>
+<p>Hurdle model looks like a pretty good fit but residuals not really symmetrically distributed - still rightward skewed
+When tested against final NegBi model, it has higher AIC</p>
+</div>
+<div id="clm" class="section level2">
+<h2><span class="header-section-number">4.4</span> CLM</h2>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="analysis.html#cb85-1"></a>adolescents<span class="op">$</span>SDQ_<span class="dv">30</span> &lt;-<span class="st"> </span><span class="kw">as.ordered</span>(adolescents<span class="op">$</span>SDQ_<span class="dv">30</span>)</span>
+<span id="cb85-2"><a href="analysis.html#cb85-2"></a></span>
+<span id="cb85-3"><a href="analysis.html#cb85-3"></a>clm_model &lt;-<span class="st"> </span><span class="kw">clm</span>(SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>cumulative_trauma<span class="op">*</span>SDQ_peer, <span class="dt">data=</span>adolescents)</span>
+<span id="cb85-4"><a href="analysis.html#cb85-4"></a><span class="kw">summary</span>(clm_model)</span></code></pre></div>
+<pre><code>## formula: SDQ_30 ~ cumulative_trauma * SDQ_peer
+## data:    adolescents
+## 
+##  link  threshold nobs logLik    AIC      niter max.grad cond.H 
+##  logit flexible  4485 -10749.34 21594.67 6(0)  2.58e-07 1.4e+04
+## 
+## Coefficients:
+##                              Estimate Std. Error z value Pr(&gt;|z|)    
+## cumulative_trauma             0.13067    0.02380   5.489 4.03e-08 ***
+## SDQ_peer1                     0.43268    0.07817   5.535 3.11e-08 ***
+## SDQ_peer2                     0.79009    0.09234   8.556  &lt; 2e-16 ***
+## SDQ_peer3                     1.24999    0.12959   9.646  &lt; 2e-16 ***
+## SDQ_peer4                     1.90008    0.16215  11.718  &lt; 2e-16 ***
+## SDQ_peer5                     3.37032    0.26875  12.541  &lt; 2e-16 ***
+## SDQ_peer6                     3.73450    0.32229  11.588  &lt; 2e-16 ***
+## SDQ_peer7                     3.53776    0.51997   6.804 1.02e-11 ***
+## SDQ_peer8                     5.45650    1.04254   5.234 1.66e-07 ***
+## SDQ_peer9                     6.07487    0.97562   6.227 4.77e-10 ***
+## SDQ_peer10                    4.46953    1.08764   4.109 3.97e-05 ***
+## cumulative_trauma:SDQ_peer1   0.04599    0.03670   1.253   0.2102    
+## cumulative_trauma:SDQ_peer2   0.08873    0.03803   2.333   0.0197 *  
+## cumulative_trauma:SDQ_peer3   0.11842    0.04579   2.586   0.0097 ** 
+## cumulative_trauma:SDQ_peer4   0.09577    0.05106   1.876   0.0607 .  
+## cumulative_trauma:SDQ_peer5   0.03778    0.07192   0.525   0.5994    
+## cumulative_trauma:SDQ_peer6  -0.18731    0.07726  -2.424   0.0153 *  
+## cumulative_trauma:SDQ_peer7   0.17528    0.10183   1.721   0.0852 .  
+## cumulative_trauma:SDQ_peer8  -0.31553    0.20714  -1.523   0.1277    
+## cumulative_trauma:SDQ_peer9  -0.33545    0.28799  -1.165   0.2441    
+## cumulative_trauma:SDQ_peer10 -0.06658    0.20391  -0.327   0.7440    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Threshold coefficients:
+##       Estimate Std. Error z value
+## 0|1   -0.71521    0.05106 -14.006
+## 1|2    0.05663    0.04920   1.151
+## 2|3    0.64337    0.05010  12.842
+## 3|4    1.10874    0.05194  21.348
+## 4|5    1.49100    0.05408  27.571
+## 5|6    1.86979    0.05677  32.937
+## 6|7    2.20111    0.05964  36.906
+## 7|8    2.52194    0.06289  40.101
+## 8|9    2.76862    0.06577  42.098
+## 9|10   3.03101    0.06927  43.756
+## 10|11  3.38221    0.07470  45.276
+## 11|12  3.64210    0.07930  45.925
+## 12|13  3.91292    0.08466  46.220
+## 13|14  4.25454    0.09231  46.087
+## 14|15  4.56816    0.10048  45.462
+## 15|16  4.90433    0.11073  44.289
+## 16|17  5.23952    0.12272  42.694
+## 17|18  5.59097    0.13725  40.735
+## 18|19  5.87450    0.15086  38.939
+## 19|20  6.08469    0.16228  37.495
+## 20|21  6.46849    0.18621  34.739
+## 21|22  6.90550    0.21975  31.425
+## 22|23  7.55545    0.28689  26.336
+## 23|24  8.43573    0.42309  19.939
+## 24|27  8.85347    0.51265  17.270
+## 27|28  9.14591    0.58839  15.544
+## 28|29 10.25391    1.00649  10.188</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="analysis.html#cb87-1"></a><span class="kw">anova</span>(clm_model)</span></code></pre></div>
+<pre><code>## Type I Analysis of Deviance Table with Wald chi-square tests
+## 
+##                            Df   Chisq Pr(&gt;Chisq)    
+## cumulative_trauma           1 435.123  &lt; 2.2e-16 ***
+## SDQ_peer                   10 797.826  &lt; 2.2e-16 ***
+## cumulative_trauma:SDQ_peer 10  27.049   0.002559 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="analysis.html#cb89-1"></a><span class="kw">scale_test</span>(clm_model)</span></code></pre></div>
+<pre><code>## Tests of scale effects
+## 
+## formula: SDQ_30 ~ cumulative_trauma * SDQ_peer
+##                            Df logLik   AIC    LRT  Pr(&gt;Chi)    
+## &lt;none&gt;                        -10749 21595                     
+## cumulative_trauma           1 -10745 21588  8.239 0.0041004 ** 
+## SDQ_peer                   10 -10733 21582 33.006 0.0002718 ***
+## cumulative_trauma:SDQ_peer 11 -10738 21594 22.352 0.0217861 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="analysis.html#cb91-1"></a>clm_model_control &lt;-<span class="st"> </span><span class="kw">clm</span>(SDQ_<span class="dv">30</span> <span class="op">~</span><span class="st"> </span>cumulative_trauma<span class="op">+</span>SDQ_peer, <span class="dt">data=</span>adolescents)</span>
+<span id="cb91-2"><a href="analysis.html#cb91-2"></a></span>
+<span id="cb91-3"><a href="analysis.html#cb91-3"></a>LL_interaction &lt;-<span class="st"> </span><span class="kw">logLik</span>(clm_model)</span>
+<span id="cb91-4"><a href="analysis.html#cb91-4"></a>LL_control &lt;-<span class="st"> </span><span class="kw">logLik</span>(clm_model_control)</span>
+<span id="cb91-5"><a href="analysis.html#cb91-5"></a>delta_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(LL_interaction<span class="op">-</span>LL_control)</span>
+<span id="cb91-6"><a href="analysis.html#cb91-6"></a><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(delta_<span class="dv">2</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## &#39;log Lik.&#39; 0.00335421 (df=48)</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="analysis.html#cb93-1"></a><span class="kw">anova</span>(clm_model_control, clm_model, <span class="dt">test=</span><span class="st">&quot;Chisq&quot;</span>)</span></code></pre></div>
+<pre><code>## &#39;test&#39; argument ignored in anova.clm</code></pre>
+<pre><code>## Likelihood ratio tests of cumulative link models:
+##  
+##                   formula:                              link: threshold:
+## clm_model_control SDQ_30 ~ cumulative_trauma + SDQ_peer logit flexible  
+## clm_model         SDQ_30 ~ cumulative_trauma * SDQ_peer logit flexible  
+## 
+##                   no.par   AIC logLik LR.stat df Pr(&gt;Chisq)   
+## clm_model_control     38 21601 -10762                         
+## clm_model             48 21595 -10749  26.302 10   0.003354 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="plotting-of-the-final-model" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Plotting of the final model</h3>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="analysis.html#cb96-1"></a>new_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;cumulative_trauma&quot;</span>=<span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">12</span>), <span class="st">&quot;SDQ_peer&quot;</span>=<span class="kw">as.factor</span>(<span class="dv">0</span>))</span>
+<span id="cb96-2"><a href="analysis.html#cb96-2"></a>predicted &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">predict</span>(clm_model,new_data,<span class="dt">type =</span> <span class="st">&quot;p&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">cumulative_trauma=</span><span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">12</span>), <span class="dt">SDQ_peer=</span><span class="kw">as.factor</span>(<span class="dv">0</span>)) </span>
+<span id="cb96-3"><a href="analysis.html#cb96-3"></a></span>
+<span id="cb96-4"><a href="analysis.html#cb96-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</span>
+<span id="cb96-5"><a href="analysis.html#cb96-5"></a>  new_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;cumulative_trauma&quot;</span>=<span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">12</span>), <span class="st">&quot;SDQ_peer&quot;</span>=<span class="kw">as.factor</span>(i))</span>
+<span id="cb96-6"><a href="analysis.html#cb96-6"></a>  predicted_new &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">predict</span>(clm_model,new_data,<span class="dt">type =</span> <span class="st">&quot;p&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">cumulative_trauma=</span><span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">12</span>), <span class="dt">SDQ_peer=</span><span class="kw">as.factor</span>(i)) </span>
+<span id="cb96-7"><a href="analysis.html#cb96-7"></a>  predicted &lt;-<span class="st"> </span><span class="kw">full_join</span>(predicted, predicted_new)</span>
+<span id="cb96-8"><a href="analysis.html#cb96-8"></a>}</span></code></pre></div>
+<pre><code>## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)
+## Joining, by = c(&quot;fit.0&quot;, &quot;fit.1&quot;, &quot;fit.2&quot;, &quot;fit.3&quot;, &quot;fit.4&quot;, &quot;fit.5&quot;, &quot;fit.6&quot;, &quot;fit.7&quot;, &quot;fit.8&quot;, &quot;fit.9&quot;, &quot;fit.10&quot;, &quot;fit.11&quot;, &quot;fit.12&quot;, &quot;fit.13&quot;, &quot;fit.14&quot;, &quot;fit.15&quot;, &quot;fit.16&quot;, &quot;fit.17&quot;, &quot;fit.18&quot;, &quot;fit.19&quot;, &quot;fit.20&quot;, &quot;fit.21&quot;, &quot;fit.22&quot;, &quot;fit.23&quot;, &quot;fit.24&quot;, &quot;fit.27&quot;, &quot;fit.28&quot;, &quot;fit.29&quot;, &quot;cumulative_trauma&quot;, &quot;SDQ_peer&quot;)</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="analysis.html#cb98-1"></a>predicted &lt;-<span class="st"> </span>predicted <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb98-2"><a href="analysis.html#cb98-2"></a><span class="st">  </span><span class="kw">relocate</span>(cumulative_trauma, SDQ_peer) <span class="op">%&gt;%</span></span>
+<span id="cb98-3"><a href="analysis.html#cb98-3"></a><span class="st">  </span><span class="kw">rename_with</span>(<span class="op">~</span><span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;fit.&quot;</span>, <span class="st">&quot;SDQ_&quot;</span>, .x, <span class="dt">fixed =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb98-4"><a href="analysis.html#cb98-4"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> SDQ_<span class="dv">0</span><span class="op">:</span>SDQ_<span class="dv">29</span>, <span class="dt">names_to =</span> <span class="st">&quot;SDQ_30&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;probability&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb98-5"><a href="analysis.html#cb98-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">probability =</span> probability<span class="op">*</span><span class="dv">100</span>)</span>
+<span id="cb98-6"><a href="analysis.html#cb98-6"></a></span>
+<span id="cb98-7"><a href="analysis.html#cb98-7"></a>predicted<span class="op">$</span>SDQ_<span class="dv">30</span> &lt;-<span class="st"> </span><span class="kw">factor</span>(predicted<span class="op">$</span>SDQ_<span class="dv">30</span>,</span>
+<span id="cb98-8"><a href="analysis.html#cb98-8"></a>                           <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;SDQ_0&quot;</span>, <span class="st">&quot;SDQ_1&quot;</span>, <span class="st">&quot;SDQ_2&quot;</span>, <span class="st">&quot;SDQ_3&quot;</span>, <span class="st">&quot;SDQ_4&quot;</span>, <span class="st">&quot;SDQ_5&quot;</span>, <span class="st">&quot;SDQ_6&quot;</span>, <span class="st">&quot;SDQ_7&quot;</span>, <span class="st">&quot;SDQ_8&quot;</span>, <span class="st">&quot;SDQ_9&quot;</span>, </span>
+<span id="cb98-9"><a href="analysis.html#cb98-9"></a>                                      <span class="st">&quot;SDQ_10&quot;</span>, <span class="st">&quot;SDQ_11&quot;</span>, <span class="st">&quot;SDQ_12&quot;</span>, <span class="st">&quot;SDQ_13&quot;</span>, <span class="st">&quot;SDQ_14&quot;</span>, <span class="st">&quot;SDQ_15&quot;</span>, <span class="st">&quot;SDQ_16&quot;</span>, <span class="st">&quot;SDQ_17&quot;</span>, <span class="st">&quot;SDQ_18&quot;</span>, <span class="st">&quot;SDQ_19&quot;</span>,</span>
+<span id="cb98-10"><a href="analysis.html#cb98-10"></a>                                      <span class="st">&quot;SDQ_20&quot;</span>, <span class="st">&quot;SDQ_21&quot;</span>, <span class="st">&quot;SDQ_22&quot;</span>, <span class="st">&quot;SDQ_23&quot;</span>, <span class="st">&quot;SDQ_24&quot;</span>, <span class="st">&quot;SDQ_25&quot;</span>, <span class="st">&quot;SDQ_26&quot;</span>, <span class="st">&quot;SDQ_27&quot;</span>, <span class="st">&quot;SDQ_28&quot;</span>, <span class="st">&quot;SDQ_29&quot;</span>))</span>
+<span id="cb98-11"><a href="analysis.html#cb98-11"></a>  </span>
+<span id="cb98-12"><a href="analysis.html#cb98-12"></a>  </span>
+<span id="cb98-13"><a href="analysis.html#cb98-13"></a>probabilities &lt;-<span class="st"> </span><span class="kw">ggplot</span>(predicted, <span class="kw">aes</span>(<span class="dt">x=</span>cumulative_trauma, <span class="dt">y=</span>probability, <span class="dt">fill=</span>SDQ_peer)) <span class="op">+</span></span>
+<span id="cb98-14"><a href="analysis.html#cb98-14"></a><span class="st">  </span><span class="kw">geom_area</span>() <span class="op">+</span></span>
+<span id="cb98-15"><a href="analysis.html#cb98-15"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb98-16"><a href="analysis.html#cb98-16"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>)) <span class="op">+</span></span>
+<span id="cb98-17"><a href="analysis.html#cb98-17"></a><span class="st">  </span><span class="kw">scale_fill_scico_d</span>(<span class="dt">palette =</span> <span class="st">&#39;batlow&#39;</span>, <span class="dt">begin=</span><span class="dv">0</span>, <span class="dt">end=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb98-18"><a href="analysis.html#cb98-18"></a><span class="st">  </span><span class="kw">facet_wrap</span>(.<span class="op">~</span><span class="kw">ordered</span>(SDQ_<span class="dv">30</span>), <span class="dt">ncol =</span> <span class="dv">7</span>) <span class="op">+</span></span>
+<span id="cb98-19"><a href="analysis.html#cb98-19"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Cumulative trauma&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Probability&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;Peer </span><span class="ch">\n</span><span class="st">problems&quot;</span>) <span class="op">+</span></span>
+<span id="cb98-20"><a href="analysis.html#cb98-20"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>), <span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">8</span>), <span class="dt">legend.key.size =</span> <span class="kw">unit</span>(<span class="fl">0.4</span>, <span class="st">&#39;cm&#39;</span>))</span>
+<span id="cb98-21"><a href="analysis.html#cb98-21"></a>  </span>
+<span id="cb98-22"><a href="analysis.html#cb98-22"></a></span>
+<span id="cb98-23"><a href="analysis.html#cb98-23"></a><span class="kw">ggsave</span>(<span class="st">&quot;probabilities.png&quot;</span>, <span class="dt">plot=</span>probabilities, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="fl">15.5</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb98-24"><a href="analysis.html#cb98-24"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())  </span>
+<span id="cb98-25"><a href="analysis.html#cb98-25"></a></span>
+<span id="cb98-26"><a href="analysis.html#cb98-26"></a></span>
+<span id="cb98-27"><a href="analysis.html#cb98-27"></a><span class="kw">ggplot</span>(predicted, <span class="kw">aes</span>(<span class="dt">x=</span>cumulative_trauma, <span class="dt">y=</span>probability, <span class="dt">color=</span>SDQ_peer, <span class="dt">fill=</span>SDQ_peer)) <span class="op">+</span></span>
+<span id="cb98-28"><a href="analysis.html#cb98-28"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb98-29"><a href="analysis.html#cb98-29"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb98-30"><a href="analysis.html#cb98-30"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>)) <span class="op">+</span></span>
+<span id="cb98-31"><a href="analysis.html#cb98-31"></a><span class="st">  </span><span class="kw">scale_color_scico_d</span>(<span class="dt">palette =</span> <span class="st">&#39;batlow&#39;</span>, <span class="dt">begin=</span><span class="dv">0</span>, <span class="dt">end=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb98-32"><a href="analysis.html#cb98-32"></a><span class="st">  </span><span class="kw">scale_fill_scico_d</span>(<span class="dt">palette =</span> <span class="st">&#39;batlow&#39;</span>, <span class="dt">begin=</span><span class="dv">0</span>, <span class="dt">end=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb98-33"><a href="analysis.html#cb98-33"></a><span class="st">  </span><span class="kw">facet_wrap</span>(.<span class="op">~</span><span class="kw">ordered</span>(SDQ_<span class="dv">30</span>)) <span class="op">+</span></span>
+<span id="cb98-34"><a href="analysis.html#cb98-34"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Cumulative trauma&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Probability&quot;</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="analysis.html#cb99-1"></a><span class="co">#model fit</span></span>
+<span id="cb99-2"><a href="analysis.html#cb99-2"></a><span class="kw">hist</span>(<span class="kw">resids</span>(clm_model), <span class="dt">main =</span> <span class="st">&quot;Distribution of residuals&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Residuals&quot;</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="analysis.html#cb100-1"></a><span class="kw">autoplot.clm</span>(clm_model, <span class="dt">what =</span> <span class="st">&quot;qq&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb100-2"><a href="analysis.html#cb100-2"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb100-3"><a href="analysis.html#cb100-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Normal Q-Q&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb100-4"><a href="analysis.html#cb100-4"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="analysis.html#cb101-1"></a><span class="kw">plot</span>(<span class="kw">resids</span>(clm_model),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-21-3.png" width="672" /></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="analysis.html#cb102-1"></a><span class="co">#alternative plotting </span></span>
+<span id="cb102-2"><a href="analysis.html#cb102-2"></a><span class="kw">plot_model</span>(clm_model, <span class="dt">type=</span><span class="st">&quot;int&quot;</span>, <span class="dt">colors =</span> <span class="kw">scico</span>(<span class="dv">11</span>, <span class="dt">palette =</span> <span class="st">&quot;batlow&quot;</span>)) <span class="op">+</span></span>
+<span id="cb102-3"><a href="analysis.html#cb102-3"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>)) <span class="op">+</span></span>
+<span id="cb102-4"><a href="analysis.html#cb102-4"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>), <span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
+<span id="cb102-5"><a href="analysis.html#cb102-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">legend =</span> <span class="st">&quot;Peer </span><span class="ch">\n</span><span class="st">problems&quot;</span>, <span class="dt">x=</span><span class="st">&quot;Cumulative Trauma (0-12)&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Predicted probabilities of SDQ 30&quot;</span>)</span>
+<span id="cb102-6"><a href="analysis.html#cb102-6"></a></span>
+<span id="cb102-7"><a href="analysis.html#cb102-7"></a></span>
+<span id="cb102-8"><a href="analysis.html#cb102-8"></a><span class="kw">plot_model</span>(clm_model, <span class="dt">terms=</span><span class="st">&quot;cumulative_trauma&quot;</span>, <span class="dt">type=</span><span class="st">&quot;eff&quot;</span>) <span class="op">+</span></span>
+<span id="cb102-9"><a href="analysis.html#cb102-9"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>)) <span class="op">+</span></span>
+<span id="cb102-10"><a href="analysis.html#cb102-10"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Cumulative Trauma (0-12)&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb102-11"><a href="analysis.html#cb102-11"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>())</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-data-summaries-and-explorations.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

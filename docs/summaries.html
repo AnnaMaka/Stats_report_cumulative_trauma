@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Summaries | Data Preparation and Analysis</title>
+  <meta name="description" content="3 Summaries | Data Preparation and Analysis" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Summaries | Data Preparation and Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Summaries | Data Preparation and Analysis" />
+  
+  
+  
+
+<meta name="author" content="Anna Makova" />
+
+
+<meta name="date" content="2021-01-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="set-up.html"/>
+<link rel="next" href="analysis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#summary"><i class="fa fa-check"></i><b>1.1</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a><ul>
+<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#import-and-wrangling-of-data"><i class="fa fa-check"></i><b>2.1</b> Import and Wrangling of Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="summaries.html"><a href="summaries.html"><i class="fa fa-check"></i><b>3</b> Summaries</a><ul>
+<li class="chapter" data-level="3.1" data-path="summaries.html"><a href="summaries.html#age-distribution"><i class="fa fa-check"></i><b>3.1</b> Age Distribution</a></li>
+<li class="chapter" data-level="3.2" data-path="summaries.html"><a href="summaries.html#exploring-used-variables-and-their-distribution"><i class="fa fa-check"></i><b>3.2</b> Exploring used variables and their distribution</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="summaries.html"><a href="summaries.html#sdq-30---depedent-variable"><i class="fa fa-check"></i><b>3.2.1</b> SDQ 30 - depedent variable</a></li>
+<li class="chapter" data-level="3.2.2" data-path="summaries.html"><a href="summaries.html#cumulative-trauma---independent-variable"><i class="fa fa-check"></i><b>3.2.2</b> Cumulative trauma - independent variable</a></li>
+<li class="chapter" data-level="3.2.3" data-path="summaries.html"><a href="summaries.html#peer-problems-score"><i class="fa fa-check"></i><b>3.2.3</b> Peer problems score</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="summaries.html"><a href="summaries.html#plotted-according-to-model-formula"><i class="fa fa-check"></i><b>3.3</b> plotted according to model formula</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> ANALYSIS</a><ul>
+<li class="chapter" data-level="4.1" data-path="analysis.html"><a href="analysis.html#poisson-regression"><i class="fa fa-check"></i><b>4.1</b> Poisson regression</a></li>
+<li class="chapter" data-level="4.2" data-path="analysis.html"><a href="analysis.html#negative-binomial-model"><i class="fa fa-check"></i><b>4.2</b> Negative Binomial Model</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="analysis.html"><a href="analysis.html#new-reduced-nb-model"><i class="fa fa-check"></i><b>4.2.1</b> New reduced NB model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="analysis.html"><a href="analysis.html#standard-errors-mle"><i class="fa fa-check"></i><b>4.3</b> Standard errors: MLE</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="analysis.html"><a href="analysis.html#plotting-of-the-model-predictions"><i class="fa fa-check"></i><b>4.3.1</b> Plotting of the model predictions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="analysis.html"><a href="analysis.html#hurdle"><i class="fa fa-check"></i><b>4.4</b> Hurdle</a></li>
+<li class="chapter" data-level="4.5" data-path="analysis.html"><a href="analysis.html#clm"><i class="fa fa-check"></i><b>4.5</b> CLM</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="analysis.html"><a href="analysis.html#plotting-of-the-final-model"><i class="fa fa-check"></i><b>4.5.1</b> Plotting of the final model</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Preparation and Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="summaries" class="section level1">
+<h1><span class="header-section-number">3</span> Summaries</h1>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="summaries.html#cb70-1"></a>summaries &lt;-<span class="st"> </span>adolescents <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb70-2"><a href="summaries.html#cb70-2"></a><span class="st">  </span><span class="kw">group_by</span>(SDQ_peer) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb70-3"><a href="summaries.html#cb70-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>(), <span class="dt">mean_30 =</span> <span class="kw">round</span>(<span class="kw">mean</span>(<span class="kw">as.numeric</span>(SDQ_<span class="dv">30</span>)),<span class="dv">3</span>), <span class="dt">sd_30 =</span> <span class="kw">round</span>(<span class="kw">sd</span>(<span class="kw">as.numeric</span>(SDQ_<span class="dv">30</span>)),<span class="dv">3</span>), <span class="dt">median_30=</span><span class="kw">median</span>(<span class="kw">as.numeric</span>(SDQ_<span class="dv">30</span>)), </span>
+<span id="cb70-4"><a href="summaries.html#cb70-4"></a>            <span class="dt">mean_ct =</span> <span class="kw">round</span>(<span class="kw">mean</span>(cumulative_trauma), <span class="dv">3</span>), <span class="dt">sd_ct =</span> <span class="kw">round</span>(<span class="kw">sd</span>(cumulative_trauma),<span class="dv">3</span>), <span class="dt">median_ct =</span> <span class="kw">round</span>(<span class="kw">median</span>(cumulative_trauma), <span class="dv">3</span>))</span>
+<span id="cb70-5"><a href="summaries.html#cb70-5"></a></span>
+<span id="cb70-6"><a href="summaries.html#cb70-6"></a>summaries_overall &lt;-<span class="st"> </span>adolescents <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb70-7"><a href="summaries.html#cb70-7"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_30 =</span> <span class="kw">round</span>(<span class="kw">mean</span>(<span class="kw">as.numeric</span>(SDQ_<span class="dv">30</span>)),<span class="dv">3</span>), <span class="dt">sd_30 =</span> <span class="kw">round</span>(<span class="kw">sd</span>(<span class="kw">as.numeric</span>(SDQ_<span class="dv">30</span>)),<span class="dv">3</span>), <span class="dt">median_30=</span><span class="kw">median</span>(<span class="kw">as.numeric</span>(SDQ_<span class="dv">30</span>)), </span>
+<span id="cb70-8"><a href="summaries.html#cb70-8"></a>            <span class="dt">mean_ct =</span> <span class="kw">round</span>(<span class="kw">mean</span>(cumulative_trauma), <span class="dv">3</span>), <span class="dt">sd_ct =</span> <span class="kw">round</span>(<span class="kw">sd</span>(cumulative_trauma),<span class="dv">3</span>), <span class="dt">median_ct =</span> <span class="kw">round</span>(<span class="kw">median</span>(cumulative_trauma), <span class="dv">3</span>),</span>
+<span id="cb70-9"><a href="summaries.html#cb70-9"></a>            <span class="dt">mean_PP =</span> <span class="kw">round</span>(<span class="kw">mean</span>(<span class="kw">as.numeric</span>(SDQ_peer)),<span class="dv">3</span>), <span class="dt">sd_PP =</span> <span class="kw">round</span>(<span class="kw">sd</span>(<span class="kw">as.numeric</span>(SDQ_peer)),<span class="dv">3</span>), <span class="dt">median_pp =</span> <span class="kw">round</span>(<span class="kw">median</span>(SDQ_peer), <span class="dv">3</span>))</span>
+<span id="cb70-10"><a href="summaries.html#cb70-10"></a></span>
+<span id="cb70-11"><a href="summaries.html#cb70-11"></a><span class="kw">write_csv</span>(summaries, <span class="st">&quot;summary_table.csv&quot;</span>)</span></code></pre></div>
+<div id="age-distribution" class="section level2">
+<h2><span class="header-section-number">3.1</span> Age Distribution</h2>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="summaries.html#cb71-1"></a>age_graph &lt;-<span class="st"> </span><span class="kw">ggplot</span>(adolescents, <span class="kw">aes</span>(<span class="dt">x=</span>age)) <span class="op">+</span></span>
+<span id="cb71-2"><a href="summaries.html#cb71-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&quot;darksalmon&quot;</span>) <span class="op">+</span></span>
+<span id="cb71-3"><a href="summaries.html#cb71-3"></a><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></span>
+<span id="cb71-4"><a href="summaries.html#cb71-4"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">major=</span><span class="st">&quot;y&quot;</span>, <span class="dt">minor=</span><span class="st">&quot;y&quot;</span>) <span class="op">+</span></span>
+<span id="cb71-5"><a href="summaries.html#cb71-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">17</span>)) <span class="op">+</span></span>
+<span id="cb71-6"><a href="summaries.html#cb71-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>), <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>)) <span class="op">+</span></span>
+<span id="cb71-7"><a href="summaries.html#cb71-7"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Count&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Distribution of age&quot;</span>) </span>
+<span id="cb71-8"><a href="summaries.html#cb71-8"></a>  </span>
+<span id="cb71-9"><a href="summaries.html#cb71-9"></a>  </span>
+<span id="cb71-10"><a href="summaries.html#cb71-10"></a><span class="kw">ggsave</span>(<span class="st">&quot;age.png&quot;</span>, <span class="dt">plot=</span>age_graph, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">11</span>, <span class="dt">height =</span> <span class="fl">8.5</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb71-11"><a href="summaries.html#cb71-11"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span>
+<span id="cb71-12"><a href="summaries.html#cb71-12"></a></span>
+<span id="cb71-13"><a href="summaries.html#cb71-13"></a>age_graph</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="summaries.html#cb72-1"></a><span class="kw">mean</span>(adolescents<span class="op">$</span>age)</span></code></pre></div>
+<pre><code>## [1] 13.71996</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="summaries.html#cb74-1"></a><span class="kw">sd</span>(adolescents<span class="op">$</span>age)</span></code></pre></div>
+<pre><code>## [1] 2.279249</code></pre>
+</div>
+<div id="exploring-used-variables-and-their-distribution" class="section level2">
+<h2><span class="header-section-number">3.2</span> Exploring used variables and their distribution</h2>
+<div id="sdq-30---depedent-variable" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> SDQ 30 - depedent variable</h3>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="summaries.html#cb76-1"></a>response_graph &lt;-<span class="st"> </span><span class="kw">ggplot</span>(adolescents, <span class="kw">aes</span>(<span class="dt">x=</span>SDQ_<span class="dv">30</span>)) <span class="op">+</span></span>
+<span id="cb76-2"><a href="summaries.html#cb76-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&quot;thistle&quot;</span>) <span class="op">+</span></span>
+<span id="cb76-3"><a href="summaries.html#cb76-3"></a><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></span>
+<span id="cb76-4"><a href="summaries.html#cb76-4"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">major=</span><span class="st">&quot;y&quot;</span>, <span class="dt">minor=</span><span class="st">&quot;y&quot;</span>) <span class="op">+</span></span>
+<span id="cb76-5"><a href="summaries.html#cb76-5"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>), <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>)) <span class="op">+</span></span>
+<span id="cb76-6"><a href="summaries.html#cb76-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;SDQ 30 score&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Count&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Distribution of response variable (SDQ 30 score)&quot;</span>) </span>
+<span id="cb76-7"><a href="summaries.html#cb76-7"></a></span>
+<span id="cb76-8"><a href="summaries.html#cb76-8"></a>SDQ_high_graph &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">subset</span>(adolescents, SDQ_<span class="dv">30</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">19</span>), <span class="kw">aes</span>(<span class="dt">x=</span>SDQ_<span class="dv">30</span>)) <span class="op">+</span></span>
+<span id="cb76-9"><a href="summaries.html#cb76-9"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&quot;thistle&quot;</span>) <span class="op">+</span></span>
+<span id="cb76-10"><a href="summaries.html#cb76-10"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data=</span><span class="kw">subset</span>(adolescents, SDQ_<span class="dv">30</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">22</span>), <span class="dt">stat=</span><span class="st">&#39;count&#39;</span>, <span class="kw">aes</span>(<span class="dt">label=</span>..count..), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.5</span>, <span class="dt">color=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></span>
+<span id="cb76-11"><a href="summaries.html#cb76-11"></a><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></span>
+<span id="cb76-12"><a href="summaries.html#cb76-12"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">major=</span><span class="st">&quot;y&quot;</span>, <span class="dt">minor=</span><span class="st">&quot;y&quot;</span>) <span class="op">+</span></span>
+<span id="cb76-13"><a href="summaries.html#cb76-13"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, </span>
+<span id="cb76-14"><a href="summaries.html#cb76-14"></a>        <span class="dt">axis.title =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">9</span>), </span>
+<span id="cb76-15"><a href="summaries.html#cb76-15"></a>        <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;white&quot;</span>, <span class="dt">size=</span><span class="fl">0.8</span>, <span class="dt">color=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">linetype=</span><span class="dv">3</span>)) <span class="op">+</span></span>
+<span id="cb76-16"><a href="summaries.html#cb76-16"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">30</span>))  <span class="op">+</span></span>
+<span id="cb76-17"><a href="summaries.html#cb76-17"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)) </span>
+<span id="cb76-18"><a href="summaries.html#cb76-18"></a></span>
+<span id="cb76-19"><a href="summaries.html#cb76-19"></a>response_graph &lt;-<span class="st"> </span>response_graph <span class="op">+</span><span class="st"> </span><span class="kw">inset_element</span>(SDQ_high_graph, <span class="dt">left =</span> <span class="fl">0.5</span>, <span class="dt">bottom =</span> <span class="fl">0.4</span>, <span class="dt">right =</span> <span class="dv">1</span>, <span class="dt">top =</span> <span class="dv">1</span>)</span>
+<span id="cb76-20"><a href="summaries.html#cb76-20"></a></span>
+<span id="cb76-21"><a href="summaries.html#cb76-21"></a></span>
+<span id="cb76-22"><a href="summaries.html#cb76-22"></a><span class="kw">ggsave</span>(<span class="st">&quot;response_graph .png&quot;</span>, <span class="dt">plot=</span>response_graph, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">14</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb76-23"><a href="summaries.html#cb76-23"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span>
+<span id="cb76-24"><a href="summaries.html#cb76-24"></a></span>
+<span id="cb76-25"><a href="summaries.html#cb76-25"></a>response_graph</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="fitting-pdf" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> Fitting PDF</h4>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="summaries.html#cb77-1"></a>fit_geom &lt;-<span class="st"> </span><span class="kw">fitdist</span>(adolescents<span class="op">$</span>SDQ_<span class="dv">30</span>, <span class="st">&quot;geom&quot;</span>)</span>
+<span id="cb77-2"><a href="summaries.html#cb77-2"></a><span class="kw">plot</span>(fit_geom)</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>
+<div id="cumulative-trauma---independent-variable" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Cumulative trauma - independent variable</h3>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="summaries.html#cb78-1"></a>trauma_graph &lt;-<span class="st"> </span><span class="kw">ggplot</span>(adolescents, <span class="kw">aes</span>(<span class="dt">x=</span>cumulative_trauma)) <span class="op">+</span></span>
+<span id="cb78-2"><a href="summaries.html#cb78-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&quot;#CC6666&quot;</span>, <span class="dt">width=</span><span class="fl">0.1</span>) <span class="op">+</span></span>
+<span id="cb78-3"><a href="summaries.html#cb78-3"></a><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></span>
+<span id="cb78-4"><a href="summaries.html#cb78-4"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">major=</span><span class="st">&quot;y&quot;</span>, <span class="dt">minor=</span><span class="st">&quot;y&quot;</span>) <span class="op">+</span></span>
+<span id="cb78-5"><a href="summaries.html#cb78-5"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>)) <span class="op">+</span></span>
+<span id="cb78-6"><a href="summaries.html#cb78-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Cumulative trauma&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Count&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Distribution of cumulative trauma across the sample&quot;</span>) <span class="op">+</span></span>
+<span id="cb78-7"><a href="summaries.html#cb78-7"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>))</span>
+<span id="cb78-8"><a href="summaries.html#cb78-8"></a>  </span>
+<span id="cb78-9"><a href="summaries.html#cb78-9"></a></span>
+<span id="cb78-10"><a href="summaries.html#cb78-10"></a>high_trauma_graph&lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">subset</span>(adolescents, cumulative_trauma <span class="op">&gt;=</span><span class="st"> </span><span class="dv">5</span>), <span class="kw">aes</span>(<span class="dt">x=</span>cumulative_trauma)) <span class="op">+</span></span>
+<span id="cb78-11"><a href="summaries.html#cb78-11"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&quot;#CC6666&quot;</span>, <span class="dt">width=</span><span class="fl">0.09</span>) <span class="op">+</span></span>
+<span id="cb78-12"><a href="summaries.html#cb78-12"></a><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></span>
+<span id="cb78-13"><a href="summaries.html#cb78-13"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">major=</span><span class="st">&quot;y&quot;</span>, <span class="dt">minor=</span><span class="st">&quot;y&quot;</span>) <span class="op">+</span></span>
+<span id="cb78-14"><a href="summaries.html#cb78-14"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, </span>
+<span id="cb78-15"><a href="summaries.html#cb78-15"></a>        <span class="dt">axis.title =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">9</span>), </span>
+<span id="cb78-16"><a href="summaries.html#cb78-16"></a>        <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;white&quot;</span>, <span class="dt">size=</span><span class="fl">0.8</span>, <span class="dt">color=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">linetype=</span><span class="dv">3</span>)) <span class="op">+</span></span>
+<span id="cb78-17"><a href="summaries.html#cb78-17"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>))</span>
+<span id="cb78-18"><a href="summaries.html#cb78-18"></a></span>
+<span id="cb78-19"><a href="summaries.html#cb78-19"></a>trauma_graph &lt;-<span class="st"> </span>trauma_graph <span class="op">+</span><span class="st"> </span><span class="kw">inset_element</span>(high_trauma_graph, <span class="dt">left =</span> <span class="fl">0.5</span>, <span class="dt">bottom =</span> <span class="fl">0.4</span>, <span class="dt">right =</span> <span class="dv">1</span>, <span class="dt">top =</span> <span class="dv">1</span>)</span>
+<span id="cb78-20"><a href="summaries.html#cb78-20"></a></span>
+<span id="cb78-21"><a href="summaries.html#cb78-21"></a><span class="kw">ggsave</span>(<span class="st">&quot;trauma_graph.png&quot;</span>, <span class="dt">plot=</span>trauma_graph, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">14</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb78-22"><a href="summaries.html#cb78-22"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span></code></pre></div>
+<pre><code>## Warning: position_stack requires non-overlapping x intervals
+
+## Warning: position_stack requires non-overlapping x intervals</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="summaries.html#cb80-1"></a>trauma_graph</span></code></pre></div>
+<pre><code>## Warning: position_stack requires non-overlapping x intervals
+
+## Warning: position_stack requires non-overlapping x intervals</code></pre>
+<p><img src="Test-book_files/figure-html/version%201-1.png" width="672" /></p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="summaries.html#cb82-1"></a>trauma_graph_violin &lt;-<span class="st"> </span><span class="kw">ggplot</span>(adolescents <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">dummy=</span><span class="dv">1</span>), <span class="kw">aes</span>(<span class="dt">x=</span>dummy, <span class="dt">y=</span>cumulative_trauma)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb82-2"><a href="summaries.html#cb82-2"></a><span class="st">  </span><span class="co"># violin plot</span></span>
+<span id="cb82-3"><a href="summaries.html#cb82-3"></a><span class="st">  </span><span class="kw">geom_half_violin</span>(<span class="kw">aes</span>(<span class="dt">x=</span>dummy<span class="fl">+0.06</span>), <span class="dt">fill=</span><span class="st">&quot;#CC6666&quot;</span>, <span class="dt">alpha =</span><span class="fl">0.9</span>, <span class="dt">color=</span><span class="ot">NA</span>, <span class="dt">side =</span> <span class="st">&quot;r&quot;</span>) <span class="op">+</span></span>
+<span id="cb82-4"><a href="summaries.html#cb82-4"></a><span class="st">  </span><span class="co"># single subject data points (1 per participant) with horizontal jitter</span></span>
+<span id="cb82-5"><a href="summaries.html#cb82-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>dummy<span class="fl">-0.1</span>), <span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span><span class="fl">0.04</span>, <span class="dt">height =</span> <span class="fl">0.1</span>), <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb82-6"><a href="summaries.html#cb82-6"></a><span class="st">  </span><span class="co"># boxplot of distribution (median, 1st and 3rd quartile)</span></span>
+<span id="cb82-7"><a href="summaries.html#cb82-7"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">.08</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>) <span class="op">+</span></span>
+<span id="cb82-8"><a href="summaries.html#cb82-8"></a><span class="st">  </span><span class="co"># adding plot of mean and SEM  </span></span>
+<span id="cb82-9"><a href="summaries.html#cb82-9"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>, <span class="dt">shape =</span> <span class="dv">16</span>,</span>
+<span id="cb82-10"><a href="summaries.html#cb82-10"></a>               <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="op">+</span>.<span class="dv">06</span>), <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb82-11"><a href="summaries.html#cb82-11"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,</span>
+<span id="cb82-12"><a href="summaries.html#cb82-12"></a>               <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="op">+</span>.<span class="dv">06</span>), <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb82-13"><a href="summaries.html#cb82-13"></a><span class="st">  </span><span class="co"># correcting labels</span></span>
+<span id="cb82-14"><a href="summaries.html#cb82-14"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;Cumulative Trauma (0-12)&#39;</span>, <span class="dt">title =</span> <span class="st">&#39;Distribution of cumulative trauma scores&#39;</span>) <span class="op">+</span></span>
+<span id="cb82-15"><a href="summaries.html#cb82-15"></a><span class="st">  </span><span class="co"># aesthetical changes</span></span>
+<span id="cb82-16"><a href="summaries.html#cb82-16"></a><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></span>
+<span id="cb82-17"><a href="summaries.html#cb82-17"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.y =</span> <span class="kw">element_blank</span>(), </span>
+<span id="cb82-18"><a href="summaries.html#cb82-18"></a>        <span class="dt">axis.ticks.y =</span> <span class="kw">element_blank</span>(),</span>
+<span id="cb82-19"><a href="summaries.html#cb82-19"></a>        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">11</span>),</span>
+<span id="cb82-20"><a href="summaries.html#cb82-20"></a>        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>),</span>
+<span id="cb82-21"><a href="summaries.html#cb82-21"></a>        <span class="dt">aspect.ratio =</span> <span class="dv">1</span>, </span>
+<span id="cb82-22"><a href="summaries.html#cb82-22"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">12</span>)) <span class="op">+</span><span class="st">  </span></span>
+<span id="cb82-23"><a href="summaries.html#cb82-23"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>, <span class="dv">12</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.2</span>,<span class="dv">12</span>)) <span class="op">+</span></span>
+<span id="cb82-24"><a href="summaries.html#cb82-24"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="fl">0.85</span>, <span class="fl">1.45</span>)) <span class="op">+</span></span>
+<span id="cb82-25"><a href="summaries.html#cb82-25"></a><span class="st">  </span><span class="kw">coord_flip</span>() </span>
+<span id="cb82-26"><a href="summaries.html#cb82-26"></a></span>
+<span id="cb82-27"><a href="summaries.html#cb82-27"></a><span class="kw">ggsave</span>(<span class="st">&quot;trauma_graph_violin.png&quot;</span>, <span class="dt">plot=</span>trauma_graph_violin, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">10</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb82-28"><a href="summaries.html#cb82-28"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span>
+<span id="cb82-29"><a href="summaries.html#cb82-29"></a></span>
+<span id="cb82-30"><a href="summaries.html#cb82-30"></a>trauma_graph_violin</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/version%202-1.png" width="672" /></p>
+</div>
+<div id="peer-problems-score" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Peer problems score</h3>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="summaries.html#cb83-1"></a>peers_graph_overall &lt;-<span class="st"> </span><span class="kw">ggplot</span>(adolescents, <span class="kw">aes</span>(<span class="dt">x=</span>SDQ_peer, <span class="dt">fill=</span>peer_problems)) <span class="op">+</span></span>
+<span id="cb83-2"><a href="summaries.html#cb83-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width=</span><span class="fl">0.9</span>, <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;#875F79&quot;</span>)) <span class="op">+</span></span>
+<span id="cb83-3"><a href="summaries.html#cb83-3"></a><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></span>
+<span id="cb83-4"><a href="summaries.html#cb83-4"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">major=</span><span class="st">&quot;y&quot;</span>, <span class="dt">minor=</span><span class="st">&quot;y&quot;</span>) <span class="op">+</span></span>
+<span id="cb83-5"><a href="summaries.html#cb83-5"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">vjust=</span><span class="dv">6</span>), <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>)) <span class="op">+</span></span>
+<span id="cb83-6"><a href="summaries.html#cb83-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Problems with peer relationships&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Count&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Distribution of SDQ Peer Problems Subscale Scores&quot;</span>) <span class="op">+</span></span>
+<span id="cb83-7"><a href="summaries.html#cb83-7"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)) </span>
+<span id="cb83-8"><a href="summaries.html#cb83-8"></a></span>
+<span id="cb83-9"><a href="summaries.html#cb83-9"></a>peers_graph_high &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">subset</span>(adolescents, SDQ_peer <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>), <span class="kw">aes</span>(<span class="dt">x=</span>SDQ_peer)) <span class="op">+</span></span>
+<span id="cb83-10"><a href="summaries.html#cb83-10"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&quot;#875F79&quot;</span>, <span class="dt">width=</span><span class="fl">0.9</span>) <span class="op">+</span></span>
+<span id="cb83-11"><a href="summaries.html#cb83-11"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">stat=</span><span class="st">&#39;count&#39;</span>, <span class="kw">aes</span>(<span class="dt">label=</span>..count..), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.8</span>, <span class="dt">color=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></span>
+<span id="cb83-12"><a href="summaries.html#cb83-12"></a><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></span>
+<span id="cb83-13"><a href="summaries.html#cb83-13"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">major=</span><span class="st">&quot;y&quot;</span>, <span class="dt">minor=</span><span class="st">&quot;y&quot;</span>) <span class="op">+</span></span>
+<span id="cb83-14"><a href="summaries.html#cb83-14"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>), <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>), <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">9</span>), <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;white&quot;</span>, <span class="dt">size=</span><span class="fl">0.8</span>, <span class="dt">color=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">linetype=</span><span class="dv">3</span>)) <span class="op">+</span></span>
+<span id="cb83-15"><a href="summaries.html#cb83-15"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot; &quot;</span>, <span class="dt">y=</span><span class="st">&quot; &quot;</span>) <span class="op">+</span></span>
+<span id="cb83-16"><a href="summaries.html#cb83-16"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>))  <span class="op">+</span></span>
+<span id="cb83-17"><a href="summaries.html#cb83-17"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">80</span>))</span>
+<span id="cb83-18"><a href="summaries.html#cb83-18"></a></span>
+<span id="cb83-19"><a href="summaries.html#cb83-19"></a>peers_graph &lt;-<span class="st"> </span>peers_graph_overall <span class="op">+</span><span class="st"> </span><span class="kw">inset_element</span>(peers_graph_high, <span class="dt">left =</span> <span class="fl">0.5</span>, <span class="dt">bottom =</span> <span class="fl">0.4</span>, <span class="dt">right =</span> <span class="dv">1</span>, <span class="dt">top =</span> <span class="fl">1.05</span>)</span>
+<span id="cb83-20"><a href="summaries.html#cb83-20"></a></span>
+<span id="cb83-21"><a href="summaries.html#cb83-21"></a><span class="kw">ggsave</span>(<span class="st">&quot;peer_graph.png&quot;</span>, <span class="dt">plot=</span>peers_graph, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">14</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb83-22"><a href="summaries.html#cb83-22"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span>
+<span id="cb83-23"><a href="summaries.html#cb83-23"></a></span>
+<span id="cb83-24"><a href="summaries.html#cb83-24"></a>peers_graph</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div id="check-for-collinearity" class="section level4">
+<h4><span class="header-section-number">3.2.3.1</span> check for collinearity</h4>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="summaries.html#cb84-1"></a><span class="kw">ggplot</span>(adolescents, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">as.numeric</span>(SDQ_peer), <span class="dt">y=</span>cumulative_trauma)) <span class="op">+</span></span>
+<span id="cb84-2"><a href="summaries.html#cb84-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width=</span><span class="fl">0.4</span>) <span class="op">+</span></span>
+<span id="cb84-3"><a href="summaries.html#cb84-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">stat =</span> <span class="st">&quot;smooth&quot;</span>, <span class="dt">method=</span><span class="st">&quot;glm&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="plotted-according-to-model-formula" class="section level2">
+<h2><span class="header-section-number">3.3</span> plotted according to model formula</h2>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="summaries.html#cb86-1"></a>distribution &lt;-<span class="st"> </span><span class="kw">ggplot</span>(adolescents, <span class="kw">aes</span>(<span class="dt">x=</span>cumulative_trauma, <span class="dt">y=</span><span class="kw">as.numeric</span>(SDQ_<span class="dv">30</span>), <span class="dt">color=</span><span class="kw">as.factor</span>(SDQ_peer))) <span class="op">+</span></span>
+<span id="cb86-2"><a href="summaries.html#cb86-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width=</span><span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb86-3"><a href="summaries.html#cb86-3"></a><span class="st">  </span><span class="kw">scale_color_scico_d</span>(<span class="dt">palette =</span> <span class="st">&#39;batlow&#39;</span>, <span class="dt">begin=</span><span class="dv">0</span>, <span class="dt">end=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb86-4"><a href="summaries.html#cb86-4"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb86-5"><a href="summaries.html#cb86-5"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">minor =</span> <span class="st">&quot;xy&quot;</span>) <span class="op">+</span></span>
+<span id="cb86-6"><a href="summaries.html#cb86-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Cumulative trauma&quot;</span>, <span class="dt">y=</span><span class="st">&quot;SDQ 30 score&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Data&quot;</span>, <span class="dt">color=</span><span class="st">&quot;Peer problems&quot;</span>) <span class="op">+</span></span>
+<span id="cb86-7"><a href="summaries.html#cb86-7"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb86-8"><a href="summaries.html#cb86-8"></a><span class="st">  </span><span class="co">#guides(col = guide_legend(nrow = 1)) +</span></span>
+<span id="cb86-9"><a href="summaries.html#cb86-9"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)) <span class="op">+</span></span>
+<span id="cb86-10"><a href="summaries.html#cb86-10"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>)) </span>
+<span id="cb86-11"><a href="summaries.html#cb86-11"></a></span>
+<span id="cb86-12"><a href="summaries.html#cb86-12"></a><span class="kw">ggsave</span>(<span class="st">&quot;data_graph.png&quot;</span>, <span class="dt">plot=</span>distribution, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="fl">10.5</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb86-13"><a href="summaries.html#cb86-13"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span>
+<span id="cb86-14"><a href="summaries.html#cb86-14"></a></span>
+<span id="cb86-15"><a href="summaries.html#cb86-15"></a>distribution</span></code></pre></div>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="summaries.html#cb87-1"></a>distribution_facet &lt;-<span class="st"> </span><span class="kw">ggplot</span>(adolescents, <span class="kw">aes</span>(<span class="dt">x=</span>cumulative_trauma, <span class="dt">y=</span><span class="kw">as.numeric</span>(SDQ_<span class="dv">30</span>), <span class="dt">color=</span><span class="kw">as.factor</span>(SDQ_peer))) <span class="op">+</span></span>
+<span id="cb87-2"><a href="summaries.html#cb87-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width=</span><span class="fl">0.3</span>, <span class="dt">size=</span><span class="fl">0.65</span>) <span class="op">+</span></span>
+<span id="cb87-3"><a href="summaries.html#cb87-3"></a><span class="st">  </span><span class="kw">scale_color_scico_d</span>(<span class="dt">palette =</span> <span class="st">&#39;batlow&#39;</span>, <span class="dt">begin=</span><span class="dv">0</span>, <span class="dt">end=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb87-4"><a href="summaries.html#cb87-4"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb87-5"><a href="summaries.html#cb87-5"></a><span class="st">  </span><span class="kw">background_grid</span>(<span class="dt">minor =</span> <span class="st">&quot;xy&quot;</span>, <span class="dt">size.major=</span><span class="fl">0.2</span>, <span class="dt">size.minor=</span><span class="fl">0.1</span>) <span class="op">+</span></span>
+<span id="cb87-6"><a href="summaries.html#cb87-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Cumulative trauma&quot;</span>, <span class="dt">y=</span><span class="st">&quot;SDQ 30 score&quot;</span>, <span class="dt">title=</span><span class="st">&quot;&quot;</span>, <span class="dt">color=</span><span class="st">&quot;Peer problems&quot;</span>) <span class="op">+</span></span>
+<span id="cb87-7"><a href="summaries.html#cb87-7"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb87-8"><a href="summaries.html#cb87-8"></a><span class="st">  </span><span class="co">#guides(col = guide_legend(nrow = 1)) +</span></span>
+<span id="cb87-9"><a href="summaries.html#cb87-9"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)) <span class="op">+</span></span>
+<span id="cb87-10"><a href="summaries.html#cb87-10"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>)) <span class="op">+</span></span>
+<span id="cb87-11"><a href="summaries.html#cb87-11"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>SDQ_peer, <span class="dt">nrow =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb87-12"><a href="summaries.html#cb87-12"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>glm, <span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">0.5</span>)</span>
+<span id="cb87-13"><a href="summaries.html#cb87-13"></a></span>
+<span id="cb87-14"><a href="summaries.html#cb87-14"></a><span class="kw">ggsave</span>(<span class="st">&quot;data_graph_facet.png&quot;</span>, <span class="dt">plot=</span>distribution_facet, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>, <span class="dt">width =</span> <span class="dv">17</span>, <span class="dt">height =</span> <span class="fl">7.5</span>, <span class="dt">dpi =</span> <span class="st">&quot;retina&quot;</span>, </span>
+<span id="cb87-15"><a href="summaries.html#cb87-15"></a>       <span class="dt">device =</span> <span class="st">&quot;png&quot;</span>, <span class="dt">path =</span> <span class="kw">here</span>())</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="summaries.html#cb89-1"></a>distribution_facet</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Test-book_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="set-up.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
